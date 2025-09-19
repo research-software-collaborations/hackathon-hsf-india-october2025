@@ -5,3 +5,5 @@ juliaup add release
 which julia > juliacheck.log
 julia -e 'using Pkg; Pkg.add("AwkwardArray")' 
 julia -e 'using Pkg; Pkg.add("IJulia")'
+julia -e 'using Pkg; Pkg.add("Geant4")'
+
