@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+juliaup add release
+which julia > juliacheck.log
+julia -e 'using Pkg; Pkg.add("AwkwardArray")' > julia.log
