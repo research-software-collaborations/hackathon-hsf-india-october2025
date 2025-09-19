@@ -1,0 +1,12 @@
+name: hsf-india-python
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - jupyterlab-deck
+  - jupyterlab-mathjax3
+  - vim
+  - juliaup
+  - pyjuliacall
+ 
