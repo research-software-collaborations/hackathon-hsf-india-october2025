@@ -21,6 +21,7 @@ dependencies:
       - pandas
       - vector
       - bash_kernel
+      - jupyter-vscode-server
   
      
 variables:
