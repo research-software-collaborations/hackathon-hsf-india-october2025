@@ -2,7 +2,7 @@ name: hsf-india
 channels:
   - conda-forge
 dependencies:
-  - python
+  - python=3.13
   - pip
   - cmake 
   - openssh 
