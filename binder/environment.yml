@@ -1,0 +1,26 @@
+name: hsf-india
+channels:
+  - defaults
+dependencies:
+  - python
+  - pip
+  - cmake 
+  - openssh 
+  - singularity
+  - pip:
+      - jupyterlab-deck
+      - jupyterlab-mathjax3
+      - matplotlib     
+      - numpy
+      - requests
+      - uproot
+      - fsspec-xrootd
+      - xrootd
+      - particle
+      - scipy
+      - pandas
+      - vector
+      - bash_kernel
+     
+variables:
+  LD_LIBRARY_PATH: "'$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/'"
