@@ -1,6 +1,6 @@
 name: hsf-india
 channels:
-  - defaults
+  - conda-forge
 dependencies:
   - python
   - pip
