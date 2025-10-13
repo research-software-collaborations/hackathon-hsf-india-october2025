@@ -1,0 +1,13 @@
+#!/bin/bash
+
+rm -rf binder
+rm -rf docker_info
+rm README.md
+
+
+
+cd eic
+git clone https://github.com/eic/HSF-India/
+#maybe this creates timeouts?
+#./eic-shell
+exec "$@"
