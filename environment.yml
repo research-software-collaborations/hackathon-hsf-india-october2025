@@ -6,6 +6,8 @@ dependencies:
   - pip
   - cmake 
   - openssh 
+  - jupyter-server-proxy
+  - python-build
   - code-server >=3.2
   - pip:
       - jupyterlab-deck
