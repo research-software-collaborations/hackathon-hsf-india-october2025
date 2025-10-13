@@ -6,7 +6,7 @@ dependencies:
   - pip
   - cmake 
   - openssh 
-  - singularity
+  - code-server >=3.2
   - pip:
       - jupyterlab-deck
       - jupyterlab-mathjax3
@@ -21,7 +21,7 @@ dependencies:
       - pandas
       - vector
       - bash_kernel
-      - code-server >=3.2
+  
      
 variables:
   LD_LIBRARY_PATH: "'$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/'"
