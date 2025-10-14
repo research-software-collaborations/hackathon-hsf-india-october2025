@@ -65,7 +65,7 @@ ADD binder/default.local /etc/cvmfs/default.local
 RUN ls -l /
 RUN ls -l /tmp
 RUN whoami
-RUN pip install --no-cache --upgrade pip
+RUN pip3 install --no-cache --upgrade pip
 
 ARG NB_USER
 ARG NB_UID
