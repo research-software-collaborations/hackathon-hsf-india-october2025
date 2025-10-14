@@ -1,7 +1,7 @@
 FROM gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cc7-cms:latest
 
-RUN apt-get update -y
-RUN apt-get install -y git pip wget
+RUN yum update -y
+RUN yum install -y git pip wget
 
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook jupyterlab
