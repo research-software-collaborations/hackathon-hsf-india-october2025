@@ -26,7 +26,7 @@ LABEL   org.label-schema.build-date=$BUILD_DATE \
 USER root
 
 # install cvmfs repos
-ADD etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
+ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
 
 RUN     yum install -y cvmfs cvmfs-config-default fuse && \
         yum clean -y all
@@ -45,17 +45,17 @@ RUN mkdir -p /cvmfs/cms.cern.ch && \
     echo "cms.cern.ch /cvmfs/cms.cern.ch cvmfs defaults 0 0" >> /etc/fstab && \
     mkdir -p /cvmfs/cms-opendata-conddb.cern.ch && \
     echo "cms-opendata-conddb.cern.ch /cvmfs/cms-opendata-conddb.cern.ch cvmfs defaults 0 0" >> /etc/fstab
-ADD cvmfs/cms.cern.ch.local /etc/cvmfs/config.d/cms.cern.ch.local
-ADD cvmfs/run-cvmfs.sh /etc/cvmfs/run-cvmfs.sh
+ADD binder/cms.cern.ch.local /etc/cvmfs/config.d/cms.cern.ch.local
+ADD binder/run-cvmfs.sh /etc/cvmfs/run-cvmfs.sh
 RUN chmod uga+rx /etc/cvmfs/run-cvmfs.sh
-ADD cvmfs/default.local /etc/cvmfs/default.local
+ADD binder/default.local /etc/cvmfs/default.local
 
 WORKDIR /code
 USER cmsusr
 ENV USER cmsusr
 ENV HOME /home/cmsusr
 
-ADD     entrypoints/entrypoint-cvmfs.sh /opt/cms/entrypoint.sh
+ADD     binder/entrypoint-cvmfs.sh /opt/cms/entrypoint.sh
 RUN     sudo chmod 755 /opt/cms/entrypoint.sh && \
         sudo chown -R cmsusr /home/cmsusr && \
         chmod 755 /home/cmsusr
