@@ -1,4 +1,4 @@
-FROM gitlab-registry.cern.ch/clange/cmssw-docker/cc7-cmssw-cvmfs
+FROM gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cc7-cms:latest
 
 RUN apt-get update -y
 RUN apt-get install -y git pip wget
