@@ -53,29 +53,32 @@ ADD binder/run-cvmfs.sh /etc/cvmfs/run-cvmfs.sh
 RUN chmod uga+rx /etc/cvmfs/run-cvmfs.sh
 ADD binder/default.local /etc/cvmfs/default.local
 
-#WORKDIR /code
-#USER cmsusr
-#ENV USER cmsusr
-#ENV HOME /home/cmsusr
+WORKDIR /code
+USER cmsusr
+ENV USER cmsusr
+ENV HOME /home/cmsusr
 
-#ADD     binder/entrypoint-cvmfs.sh /opt/cms/entrypoint.sh
-#RUN     sudo chmod 755 /opt/cms/entrypoint.sh && \
-#        sudo chown -R cmsusr /home/cmsusr && \
-#        chmod 755 /home/cmsusr
+ADD     binder/entrypoint-cvmfs.sh /opt/cms/entrypoint.sh
+RUN     sudo chmod 755 /opt/cms/entrypoint.sh && \
+        sudo chown -R cmsusr /home/cmsusr && \
+        chmod 755 /home/cmsusr
+
 RUN ls -l /
 RUN ls -l /tmp
 RUN whoami
 RUN pip3 install --no-cache --upgrade pip
+RUN pip3 install --no-cache notebook jupyterlab
+RUN pip3 install --no-cache numba awkward uproot matplotlib h5py hist
 
-ARG NB_USER
-ARG NB_UID
-ENV USER ${NB_USER}
-ENV HOME /home/${NB_USER}
-ENV SHELL /bin/bash
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
+#ARG NB_USER
+#ARG NB_UID
+#ENV USER ${NB_USER}
+#ENV HOME /home/${NB_USER}
+#ENV SHELL /bin/bash
+#RUN adduser --disabled-password \
+#    --gecos "Default user" \
+#    --uid ${NB_UID} \
+#    ${NB_USER}
 
 #ENTRYPOINT ["/opt/cms/entrypoint.sh"]
 #CMD     ["/bin/sh"]
