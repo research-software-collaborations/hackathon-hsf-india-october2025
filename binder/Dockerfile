@@ -73,7 +73,7 @@ ARG NB_UID
 ENV USER ${NB_USER}
 ENV HOME /home/${NB_USER}
 ENV SHELL /bin/bash
-RUN adduser 
+RUN adduser \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
