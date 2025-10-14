@@ -73,10 +73,13 @@ ARG NB_UID
 ENV USER ${NB_USER}
 ENV HOME /home/${NB_USER}
 ENV SHELL /bin/bash
-RUN adduser --disabled-password \
+RUN adduser 
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
+
+#--disabled-password \
+RUN passwd -d $NB_USER
 
 #ENTRYPOINT ["/opt/cms/entrypoint.sh"]
 #CMD     ["/bin/sh"]
