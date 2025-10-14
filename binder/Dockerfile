@@ -6,7 +6,7 @@ ARG BASEIMAGE=gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cc7-cms:latest
 # Set up the SLC6 CMSSW base:
 FROM ${BASEIMAGE}
 
-LABEL maintainer="CMS Data Preservation and Open Access Group <cms-dpoa-coordinators@cern.ch>"
+LABEL maintainer="DLange"
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
@@ -26,7 +26,7 @@ LABEL   org.label-schema.build-date=$BUILD_DATE \
 USER root
 
 # install cvmfs repos
-ADD cc7-cvmfs/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
+ADD etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
 
 RUN     yum install -y cvmfs cvmfs-config-default fuse && \
         yum clean -y all
