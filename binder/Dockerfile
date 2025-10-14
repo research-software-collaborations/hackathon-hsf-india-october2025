@@ -3,8 +3,8 @@ FROM gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cc7-cms:latest
 #RUN yum update -y
 #RUN yum install -y git pip wget
 
-RUN pip install --no-cache --upgrade pip && \
-    pip install --no-cache notebook jupyterlab
+RUN pip install --no-cache --upgrade pip
+RUN pip install --no-cache notebook jupyterlab
 
 RUN pip install --no-cache numba awkward uproot matplotlib h5py hist
 
