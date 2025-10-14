@@ -62,7 +62,9 @@ ADD binder/default.local /etc/cvmfs/default.local
 #RUN     sudo chmod 755 /opt/cms/entrypoint.sh && \
 #        sudo chown -R cmsusr /home/cmsusr && \
 #        chmod 755 /home/cmsusr
-
+RUN ls -l /
+RUN ls -l /tmp
+RUN whoami
 RUN pip install --upgrade pip
 
 ARG NB_USER
