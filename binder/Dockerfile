@@ -29,7 +29,7 @@ USER root
 ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
 RUN cat /etc/yum.repos.d/cernvm.repo
 # was cvmfs-config-default - seems not to exist
-RUN     yum install -y cvmfs cvmfs-config fuse && \
+RUN     yum install -y cvmfs cvmfs-config-default fuse && \
         yum clean -y all
 
 # afs does not work when building on Mac
