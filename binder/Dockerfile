@@ -28,6 +28,7 @@ USER root
 
 # install cvmfs repos
 ADD binder/centos.repo /etc/yum.repos.d/centos.repo
+RUN ls /etc/yum.repos.d
 RUN sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/CentOS-Base.repo
 RUN cat /etc/yum.repos.d/CentOS-Base.repo
 
