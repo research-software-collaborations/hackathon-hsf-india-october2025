@@ -55,6 +55,7 @@ RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Pac
 RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/checkpolicy-2.5-8.el7.x86_64.rpm
 RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libcgroup-0.41-21.el7.x86_64.rpm
 RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libselinux-python-2.5-15.el7.x86_64.rpm
+RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/python-IPy-0.75-6.el7.noarch.rpm
 RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/policycoreutils-python-2.5-34.el7.x86_64.rpm
 RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-2.12.7-1.el7.x86_64.rpm
 #RUN yum install -y fuse
