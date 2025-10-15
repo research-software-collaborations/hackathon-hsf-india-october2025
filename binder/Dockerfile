@@ -27,8 +27,8 @@ LABEL   org.label-schema.build-date=$BUILD_DATE \
 USER root
 
 # install cvmfs repos
-# ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
-#RUN yum-config-manager --add-repo /etc/yum.repos.d/cernvm.repo
+ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
+RUN yum-config-manager --add-repo /etc/yum.repos.d/cernvm.repo
 #RUN cat /etc/yum.repos.d/cernvm.repo
 # was cvmfs-config-default - seems not to exist
 RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
