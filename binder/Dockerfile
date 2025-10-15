@@ -36,6 +36,7 @@ USER root
 
 
 #RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libselinux-2.5-15.el7.x86_64.rpm
+RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libmnl-1.0.3-7.el7.x86_64.rpm
 RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/iproute-4.11.0-30.el7.x86_64.rpm
 RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libselinux-utils-2.5-15.el7.x86_64.rpm https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/policycoreutils-2.5-34.el7.x86_64.rpm
 #RUN yum install policycoreutils
