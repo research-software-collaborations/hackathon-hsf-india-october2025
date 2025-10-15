@@ -34,7 +34,7 @@ USER root
 #RUN yum-config-manager --add-repo https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/
 
 
-yum install --enablerepo="http://linuxsoft.cern.ch/centos-vault/" policycoreutils
+RUN yum install --enablerepo="http://linuxsoft.cern.ch/centos-vault/" policycoreutils
 #RUN yum install policycoreutils
 RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
 #RUN     yum --disablerepo="*" --enablerepo="https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/" install -y cvmfs cvmfs-config-default fuse && \
