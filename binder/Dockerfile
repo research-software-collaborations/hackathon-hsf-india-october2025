@@ -38,7 +38,7 @@ RUN yum repolist
 ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
 RUN yum-config-manager --add-repo /etc/yum.repos.d/cernvm.repo
 RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
-RUN yum install -y cvmfs fuse
+RUN yum install -y cvmfs fuse python3
  RUN yum clean -y all
 
 # afs does not work when building on Mac
