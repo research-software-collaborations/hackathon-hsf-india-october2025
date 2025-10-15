@@ -79,19 +79,15 @@ RUN pip3 install --no-cache numba awkward uproot matplotlib h5py hist
 #        sudo chown -R cmsusr /home/cmsusr && \
 #        chmod 755 /home/cmsusr
 
-
-ARG NB_USER
-ARG NB_UID
+ARG NB_USER=jovyan
+ARG NB_UID=1000
 ENV USER ${NB_USER}
 ENV HOME /home/${NB_USER}
 ENV SHELL /bin/bash
 RUN adduser \
-    --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
 
-#--disabled-password \
-RUN passwd -d $NB_USER
 
 #ENTRYPOINT ["/opt/cms/entrypoint.sh"]
 #CMD     ["/bin/sh"]
