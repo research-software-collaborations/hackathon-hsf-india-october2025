@@ -1,8 +1,8 @@
 # A container where CernVM-FS is up and running for CMSSW
 
 # Make the base image configurable:
-ARG BASEIMAGE=gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cc7-cms:latest
-
+#ARG BASEIMAGE=gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cc7-cms:latest
+ARG BASEIMAGE=gitlab-registry.cern.ch/sft/docker/centos7-core:bef2cc7
 # Set up the SLC6 CMSSW base:
 FROM ${BASEIMAGE}
 
@@ -26,7 +26,7 @@ LABEL   org.label-schema.build-date=$BUILD_DATE \
 USER root
 
 # install cvmfs repos
-ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
+# ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
 #RUN yum-config-manager --add-repo /etc/yum.repos.d/cernvm.repo
 #RUN cat /etc/yum.repos.d/cernvm.repo
 # was cvmfs-config-default - seems not to exist
