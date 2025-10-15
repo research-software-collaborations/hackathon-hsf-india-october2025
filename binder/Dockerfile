@@ -93,6 +93,9 @@ USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
 
+WORKDIR ${HOME}
+
+
 
 #ENTRYPOINT ["/opt/cms/entrypoint.sh"]
 #CMD     ["/bin/sh"]
