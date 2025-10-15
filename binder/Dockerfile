@@ -2,7 +2,7 @@
 
 # Make the base image configurable:
 #ARG BASEIMAGE=gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cc7-cms:latest
-ARG BASEIMAGE=gitlab-registry.cern.ch/sft/docker/centos7-core:bef2cc7
+ARG BASEIMAGE=gitlab-registry.cern.ch/sft/docker/centos7-core:bef2cc7c894a5b9bf1a92f239c9b587b3275a8367dc8e189f0922d714f325c85
 # Set up the SLC6 CMSSW base:
 FROM ${BASEIMAGE}
 
