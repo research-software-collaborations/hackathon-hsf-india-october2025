@@ -60,8 +60,8 @@ ADD binder/run-cvmfs.sh /etc/cvmfs/run-cvmfs.sh
 RUN chmod uga+rx /etc/cvmfs/run-cvmfs.sh
 ADD binder/default.local /etc/cvmfs/default.local
 
-RUN which pip3
-RUN which pip
+#RUN which pip3
+#RUN which pip
 RUN which python
 RUN which python3
 RUN python3 -m ensurepip
