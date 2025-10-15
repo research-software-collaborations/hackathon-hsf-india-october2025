@@ -27,13 +27,12 @@ LABEL   org.label-schema.build-date=$BUILD_DATE \
 USER root
 
 # install cvmfs repos
-ADD binder/centos.repo /etc/yum.repos.d/centos.repo
-RUN ls /etc/yum.repos.d
-RUN sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/CentOS-Base.repo
-RUN cat /etc/yum.repos.d/CentOS-Base.repo
 
+RUN sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/*.repo
+ADD binder/centos.repo /etc/yum.repos.d/centos.repo
 RUN yum-config-manager --add-repo /etc/yum.repos.d/centos.repo
 RUN yum clean all ; yum makecache
+
 RUN yum repolist
 RUN yum install -y policycoreutils-python
 #ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
