@@ -52,7 +52,7 @@ RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/
 RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/audit-libs-python-2.8.5-4.el7.x86_64.rpm
 RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libsemanage-python-2.5-14.el7.x86_64.rpm
 RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/setools-libs-3.3.8-4.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/policycoreutils-python-2.5-34.el7.x86_64.rpm
+RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/policycoreutils-python-2.5-34.el7.x86_64.rpm
 RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-2.12.7-1.el7.x86_64.rpm
 #RUN yum install -y fuse
 RUN yum clean -y all
