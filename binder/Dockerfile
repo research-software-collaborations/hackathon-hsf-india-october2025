@@ -56,7 +56,7 @@ RUN yum install -y cvmfs fuse
 #RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libselinux-utils-2.5-15.el7.x86_64.rpm https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/policycoreutils-2.5-34.el7.x86_64.rpm
 ##RUN yum install policycoreutils
 #RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/initscripts-9.49.53-1.el7.x86_64.rpm
-#RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
+RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
 #RUN     yum --disablerepo="*" --enablerepo="https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/" install -y cvmfs cvmfs-config-default fuse && \
 #RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-libs-2.12.7-1.el7.x86_64.rpm
 ##RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/audit-libs-2.8.5-4.el7.x86_64.rpm
