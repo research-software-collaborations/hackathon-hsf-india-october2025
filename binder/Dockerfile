@@ -34,6 +34,8 @@ USER root
 #RUN yum-config-manager --add-repo https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/
 
 
+
+RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libselinux-2.5-15.el7.x86_64.rpm
 RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/policycoreutils-2.5-34.el7.x86_64.rpm
 #RUN yum install policycoreutils
 RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
