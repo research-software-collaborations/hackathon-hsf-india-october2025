@@ -88,6 +88,11 @@ RUN adduser \
     --uid ${NB_UID} \
     ${NB_USER}
 
+COPY . ${HOME}
+USER root
+RUN chown -R ${NB_UID} ${HOME}
+USER ${NB_USER}
+
 
 #ENTRYPOINT ["/opt/cms/entrypoint.sh"]
 #CMD     ["/bin/sh"]
