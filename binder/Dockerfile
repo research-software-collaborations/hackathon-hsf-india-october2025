@@ -39,6 +39,14 @@ ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
 RUN yum-config-manager --add-repo /etc/yum.repos.d/cernvm.repo
 RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
 RUN yum install -y cvmfs fuse python3
+
+RUN yum install asciidoc ftgl-devel giflib-devel gl2ps-devel glew-devel glibc-devel.i686 harfbuzz-devel \
+                libAfterImage-devel libffi-devel libgcc.i686 libstdc++-devel.i686 libzstd-devel lz4-devel \
+                openldap-devel pcre2-devel perl-DBD-SQLite readline-devel subversion swig tcl-devel texinfo \
+                tk-devel xmlto xxhash-devel zstd
+
+
+
  RUN yum clean -y all
 
 # afs does not work when building on Mac
