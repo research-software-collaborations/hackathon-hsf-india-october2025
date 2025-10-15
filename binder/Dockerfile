@@ -91,6 +91,7 @@ RUN mkdir /larsoft
 RUN wget http://scisoft.fnal.gov/scisoft/bundles/tools/pullProducts
 RUN chmod +x pullProducts
 RUN ./pullProducts /larsoft slf7 larsoft-v10_11_00 s131-e26 prof
+RUN rm *.tar.bz2
 
 ARG NB_USER=jovyan
 ARG NB_UID=1000
