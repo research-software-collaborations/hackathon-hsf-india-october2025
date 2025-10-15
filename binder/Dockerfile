@@ -28,6 +28,7 @@ USER root
 
 # install cvmfs repos
 ADD binder/centos.repo /etc/yum.repos.d/centos.repo
+RUN cat /etc/yum.repos.d/CentOS-Base.repo
 RUN yum-config-manager --add-repo /etc/yum.repos.d/centos.repo
 RUN yum repolist
 RUN yum install -y policycoreutils-python
