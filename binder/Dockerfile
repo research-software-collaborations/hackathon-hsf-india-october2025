@@ -62,7 +62,7 @@ ADD binder/default.local /etc/cvmfs/default.local
 
 #RUN which pip3
 #RUN which pip
-RUN which python
+#RUN which python
 RUN which python3
 RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip
