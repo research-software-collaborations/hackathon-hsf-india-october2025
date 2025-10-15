@@ -39,43 +39,7 @@ ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
 RUN yum-config-manager --add-repo /etc/yum.repos.d/cernvm.repo
 RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
 RUN yum install -y cvmfs fuse
- 
-#RUN cat /etc/yum.repos.d/cernvm.repo
-# was cvmfs-config-default - seems not to exist
-#RUN yum-config-manager --add-repo https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/
-
-
-
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libselinux-2.5-15.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libmnl-1.0.3-7.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libnfnetlink-1.0.1-4.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libnetfilter_conntrack-1.0.6-1.el7_3.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/iptables-1.4.21-35.el7.x86_64.rpm
-
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/iproute-4.11.0-30.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libselinux-utils-2.5-15.el7.x86_64.rpm https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/policycoreutils-2.5-34.el7.x86_64.rpm
-##RUN yum install policycoreutils
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/initscripts-9.49.53-1.el7.x86_64.rpm
-
-#RUN     yum --disablerepo="*" --enablerepo="https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/" install -y cvmfs cvmfs-config-default fuse && \
-#RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-libs-2.12.7-1.el7.x86_64.rpm
-##RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/audit-libs-2.8.5-4.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/audit-libs-python-2.8.5-4.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libsemanage-python-2.5-14.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/setools-libs-3.3.8-4.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/checkpolicy-2.5-8.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libcgroup-0.41-21.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/libselinux-python-2.5-15.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/python-IPy-0.75-6.el7.noarch.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/policycoreutils-python-2.5-34.el7.x86_64.rpm
-#
-##RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/systemd-219-78.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/systemd-sysv-219-78.el7.x86_64.rpm
-#RUN yum install -y https://linuxsoft.cern.ch/centos-vault/7.9.2009/os/x86_64/Packages/autofs-5.0.7-113.el7.x86_64.rpm
-#
-#RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-2.12.7-1.el7.x86_64.rpm
-#RUN yum install -y fuse
-RUN yum clean -y all
+ RUN yum clean -y all
 
 # afs does not work when building on Mac
 # add kerberos and afs configs
@@ -96,6 +60,11 @@ ADD binder/run-cvmfs.sh /etc/cvmfs/run-cvmfs.sh
 RUN chmod uga+rx /etc/cvmfs/run-cvmfs.sh
 ADD binder/default.local /etc/cvmfs/default.local
 
+RUN which pip3
+RUN which pip
+RUN which python
+RUN which python3
+RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip
 RUN pip3 install --no-cache notebook jupyterlab
 RUN pip3 install --no-cache numba awkward uproot matplotlib h5py hist
