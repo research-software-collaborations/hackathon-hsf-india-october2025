@@ -36,7 +36,7 @@ USER root
 
 RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
 #RUN     yum --disablerepo="*" --enablerepo="https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/" install -y cvmfs cvmfs-config-default fuse && \
-#RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-libs-2.12.7-1.el7.x86_64.rpm
+RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-libs-2.12.7-1.el7.x86_64.rpm
 RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-2.12.7-1.el7.x86_64.rpm
 #RUN yum install -y fuse
 RUN yum clean -y all
