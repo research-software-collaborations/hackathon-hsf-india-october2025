@@ -35,7 +35,7 @@ RUN yum clean all ; yum makecache
 
 RUN yum repolist
 #RUN yum install -y policycoreutils-python
-RUN ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
+ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
 RUN yum-config-manager --add-repo /etc/yum.repos.d/cernvm.repo
 
 RUN yum install -y cvmfs fuse
