@@ -27,7 +27,7 @@ LABEL   org.label-schema.build-date=$BUILD_DATE \
 USER root
 
 # install cvmfs repos
-ADD binder/consos.repo /etc/yum.repos.d/centos.repo
+ADD binder/centos.repo /etc/yum.repos.d/centos.repo
 RUN yum-config-manager --add-repo /etc/yum.repos.d/centos.repo
 RUN yum install -y policycoreutils-python
 #ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
