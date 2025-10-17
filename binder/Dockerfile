@@ -8,8 +8,8 @@ ENV PIXI_LOCKED=true
 WORKDIR /opt/binder
 
 # Install environment
-COPY pixi.toml pixi.toml
-COPY pixi.lock pixi.lock
+COPY binder/pixi.toml pixi.toml
+COPY binder/pixi.lock pixi.lock
 RUN pixi install && \
     pixi run jupyter kernelspec uninstall python3 -y && \
     pixi shell-hook --shell bash > /pixi-activate.sh && \
@@ -42,7 +42,7 @@ RUN echo '#!/bin/bash\n. /usr/local/share/pixi-activate.sh\nexec "$@"' > /usr/lo
     chmod +x /usr/local/share/docker-entrypoint.sh
 
 # Make sure the contents of this repo are in ${HOME} and owned by ${NB_USER}
-COPY . ${HOME}
+COPY binder/* ${HOME}
 RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
     chown -R ${NB_UID} ${HOME}
