@@ -11,7 +11,8 @@ WORKDIR /opt/binder
 COPY binder/pixi.toml pixi.toml
 COPY binder/pixi.lock pixi.lock
 
-RUN pixi reinstall && \
+RUN pixi lock --check
+RUN pixi install && \
     pixi run jupyter kernelspec uninstall python3 -y && \
     pixi shell-hook --shell bash > /pixi-activate.sh && \
     chmod +x /pixi-activate.sh
