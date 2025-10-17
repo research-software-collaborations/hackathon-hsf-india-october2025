@@ -74,6 +74,7 @@ WORKDIR ${HOME}/work
 
 # Install the example for faster startup
 RUN ls
+RUN cp ${HOME}/compressed_mapping.json .
 RUN CONDA_OVERRIDE_CUDA=12.5 pixi install --manifest-path pixi.toml
 
 ENTRYPOINT ["/usr/local/share/docker-entrypoint.sh"]
