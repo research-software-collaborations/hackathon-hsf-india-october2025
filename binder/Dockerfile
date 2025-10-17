@@ -10,6 +10,7 @@ WORKDIR /opt/binder
 # Install environment
 COPY binder/pixi.toml pixi.toml
 COPY binder/pixi.lock pixi.lock
+RUN pixi add pathlib2
 RUN pixi install && \
     pixi run jupyter kernelspec uninstall python3 -y && \
     pixi shell-hook --shell bash > /pixi-activate.sh && \
