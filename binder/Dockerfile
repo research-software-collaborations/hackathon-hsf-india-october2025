@@ -25,6 +25,10 @@ RUN find .pixi \( -name '*.a' -o -name '*.pyc' -o -name '*.pyx' -o -name '*.pyo'
 ###################################################################################################
 FROM ghcr.io/prefix-dev/pixi:0.18.0-jammy
 
+RUN apt-get update -y
+RUN apt-get install -y git wget
+RUN apt-get update -y
+
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
 ARG NB_USER=jovyan
 ARG NB_UID=1000
