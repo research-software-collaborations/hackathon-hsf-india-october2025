@@ -9,7 +9,7 @@ WORKDIR /opt/binder
 
 # Install environment
 COPY binder/pixi.toml pixi.toml
-#COPY binder/pixi.lock pixi.lock
+COPY binder/pixi.lock pixi.lock
 
 #RUN pixi lock --check
 RUN pixi install && \
