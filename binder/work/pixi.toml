@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Example project for pixi-kernel"
 channels = ["conda-forge"]
 platforms = ["linux-64"]#, "linux-aarch64"]
+conda-pypi-map = { conda-forge = "compressed_mapping.json"}
 
 [system-requirements]
 cuda = "12.5"
