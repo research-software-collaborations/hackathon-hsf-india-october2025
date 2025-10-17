@@ -1,7 +1,7 @@
 ###################################################################################################
 # Environment builder
 ###################################################################################################
-FROM ghcr.io/prefix-dev/pixi:0.18.0-jammy as pixi-builder
+FROM ghcr.io/prefix-dev/pixi:0.56.0-jammy as pixi-builder
 
 ENV PIXI_LOCKED=true
 
@@ -23,7 +23,7 @@ RUN find .pixi \( -name '*.a' -o -name '*.pyc' -o -name '*.pyx' -o -name '*.pyo'
 ###################################################################################################
 # Final image
 ###################################################################################################
-FROM ghcr.io/prefix-dev/pixi:0.18.0-jammy
+FROM ghcr.io/prefix-dev/pixi:0.56.0-jammy
 
 RUN apt-get update -y
 RUN apt-get install -y git wget
