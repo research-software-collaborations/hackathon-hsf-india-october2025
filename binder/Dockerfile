@@ -42,11 +42,17 @@ RUN echo '#!/bin/bash\n. /usr/local/share/pixi-activate.sh\nexec "$@"' > /usr/lo
     chmod +x /usr/local/share/docker-entrypoint.sh
 
 # Make sure the contents of this repo are in ${HOME} and owned by ${NB_USER}
-COPY binder/* ${HOME}/
+COPY binder/jupyter_config.py ${HOME}/
+COPY binder/pixi.lock ${HOME}/
+COPY binder/pixi.toml ${HOME}/
 RUN ls ${HOME}
+
 RUN mkdir ${HOME}/work
 COPY binder/work/* ${HOME}/work/
 RUN ls ${HOME}/work
+
+RUN cd; git clone -b workspace_building_feature https://github.com/iris-hep/NSBI-workflow-tutorial
+
 RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
     chown -R ${NB_UID} ${HOME}
