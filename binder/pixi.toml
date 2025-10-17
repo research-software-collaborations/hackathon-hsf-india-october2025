@@ -5,6 +5,9 @@ description = "Binder example"
 authors = ["Renan Rodrigues dos Santos <renan.engmec@gmail.com>"]
 channels = ["conda-forge"]
 platforms = ["linux-64"] #, "linux-aarch64"]
+channels = ["conda-forge", "pytorch"]
+conda-pypi-map = { conda-forge = "compressed_mapping.json"}
+
 
 [dependencies]
 python = "3.12.*"
