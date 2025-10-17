@@ -3,7 +3,7 @@
 ###################################################################################################
 FROM ghcr.io/prefix-dev/pixi:0.56.0-jammy as pixi-builder
 
-ENV PIXI_LOCKED=true
+#ENV PIXI_LOCKED=true
 
 WORKDIR /opt/binder
 
