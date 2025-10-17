@@ -1,3 +1,7 @@
+#
+#
+# Taken from https://github.com/renan-r-santos/pixi-kernel-binder
+#
 ###################################################################################################
 # Environment builder
 ###################################################################################################
@@ -52,13 +56,11 @@ RUN echo '#!/bin/bash\n. /usr/local/share/pixi-activate.sh\nexec "$@"' > /usr/lo
 COPY binder/jupyter_config.py ${HOME}/
 COPY binder/pixi.lock ${HOME}/
 COPY binder/pixi.toml ${HOME}/
-RUN ls ${HOME}
 
 RUN mkdir ${HOME}/work
 COPY binder/work/* ${HOME}/work/
-RUN ls ${HOME}/work
 
-RUN cd; git clone -b workspace_building_feature https://github.com/iris-hep/NSBI-workflow-tutorial
+RUN cd ${HOME}/work; git clone -b workspace_building_feature https://github.com/iris-hep/NSBI-workflow-tutorial
 
 RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
