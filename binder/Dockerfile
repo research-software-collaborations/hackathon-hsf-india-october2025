@@ -7,8 +7,6 @@
 ###################################################################################################
 FROM ghcr.io/prefix-dev/pixi:0.56.0-jammy as pixi-builder
 
-#ENV PIXI_LOCKED=true
-
 WORKDIR /opt/binder
 
 # Install environment
@@ -25,7 +23,6 @@ RUN pixi install && \
 # Clean up
 RUN find .pixi \( -name '*.a' -o -name '*.pyc' -o -name '*.pyx' -o -name '*.pyo' \) -delete && \
     find .pixi -name '__pycache__' -type d -exec rm -rf '{}' '+'
-
 
 ###################################################################################################
 # Final image
@@ -57,11 +54,7 @@ COPY binder/jupyter_config.py ${HOME}/
 COPY binder/pixi.lock ${HOME}/
 COPY binder/pixi.toml ${HOME}/
 
-#RUN mkdir ${HOME}/work
-#COPY binder/work/* ${HOME}/work/
-
-#RUN cd ${HOME}/work 
-RUN cd ${HOME}; git clone -b workspace_building_feature https://github.com/iris-hep/NSBI-workflow-tutorial; ls NSBI-workflow-tutorial
+RUN cd ${HOME}; git clone -b workspace_building_feature https://github.com/iris-hep/NSBI-workflow-tutorial
 
 RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
@@ -73,11 +66,9 @@ USER ${NB_USER}
 COPY --from=pixi-builder /opt/binder/.pixi /opt/binder/.pixi
 COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
 
-#was work
 WORKDIR ${HOME}/NSBI-workflow-tutorial 
 
 # Install the example for faster startup
-RUN ls
 ADD binder/compressed_mapping.json ${HOME}/NSBI-workflow-tutorial
 RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e nsbi-env-gpu --manifest-path pixi.toml
 
