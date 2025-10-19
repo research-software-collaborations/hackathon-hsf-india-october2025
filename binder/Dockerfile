@@ -24,6 +24,8 @@ RUN pixi install && \
 RUN find .pixi \( -name '*.a' -o -name '*.pyc' -o -name '*.pyx' -o -name '*.pyo' \) -delete && \
     find .pixi -name '__pycache__' -type d -exec rm -rf '{}' '+'
 
+RUN sed -i 's/PIXI_ENVIRONMENT_NAME=default/PIXI_ENVIRONMENT_NAME=nsbi-env-gpu/' /pixi-activate.sh
+
 ###################################################################################################
 # Final image
 ###################################################################################################
@@ -65,10 +67,7 @@ USER ${NB_USER}
 # Copy the environment
 COPY --from=pixi-builder /opt/binder/.pixi /opt/binder/.pixi
 COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
-RUN cp /usr/local/share/pixi-activate.sh /tmp;
-RUN sed -i 's/PIXI_ENVIRONMENT_NAME=default/PIXI_ENVIRONMENT_NAME=nsbi-env-gpu/' /tmp/pixi-activate.sh
-RUN whoami
-RUN mv /tmp/pixi-activate.sh /usr/local/share/pixi-activate.sh
+
 WORKDIR ${HOME}/NSBI-workflow-tutorial 
 
 # Install the example for faster startup
