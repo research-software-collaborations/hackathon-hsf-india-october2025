@@ -17,10 +17,10 @@ COPY binder/compressed_mapping.json compressed_mapping.json
 #RUN pixi lock --check
 RUN pixi install && \
     pixi run jupyter kernelspec uninstall python3 -y && \
-    pixi run jupyter kernelspec uninstall pixi-kernel-xcpp11 \
-    pixi run jupyter kernelspec uninstall pixi-kernel-xcpp14 \
-    pixi run jupyter kernelspec uninstall pixi-kernel-xcpp17 \
-    pixi run jupyter kernelspec uninstall pixi-kernel-ir \ 
+    pixi run jupyter kernelspec uninstall pixi-kernel-xcpp11 -y \
+    pixi run jupyter kernelspec uninstall pixi-kernel-xcpp14 -y \
+    pixi run jupyter kernelspec uninstall pixi-kernel-xcpp17 -y \
+    pixi run jupyter kernelspec uninstall pixi-kernel-ir -y\ 
     pixi shell-hook --shell bash > /pixi-activate.sh && \
     chmod +x /pixi-activate.sh
 
