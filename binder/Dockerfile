@@ -75,7 +75,6 @@ COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
 WORKDIR ${HOME}/NSBI-workflow-tutorial 
 
 # Install the example for faster startup
-ADD binder/compressed_mapping.json ${HOME}/NSBI-workflow-tutorial
 RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e nsbi-env-gpu --manifest-path pixi.toml
 
-ENTRYPOINT ["/usr/local/share/docker-entrypoint.sh"]
+ENTRYPOINT ["git pull; /usr/local/share/docker-entrypoint.sh"]
