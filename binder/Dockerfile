@@ -57,10 +57,11 @@ COPY binder/jupyter_config.py ${HOME}/
 COPY binder/pixi.lock ${HOME}/
 COPY binder/pixi.toml ${HOME}/
 
-RUN mkdir ${HOME}/work
-COPY binder/work/* ${HOME}/work/
+#RUN mkdir ${HOME}/work
+#COPY binder/work/* ${HOME}/work/
 
-RUN cd ${HOME}/work; git clone -b workspace_building_feature https://github.com/iris-hep/NSBI-workflow-tutorial
+#RUN cd ${HOME}/work 
+RUN git clone -b workspace_building_feature https://github.com/iris-hep/NSBI-workflow-tutorial
 
 RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
@@ -72,11 +73,12 @@ USER ${NB_USER}
 COPY --from=pixi-builder /opt/binder/.pixi /opt/binder/.pixi
 COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
 
-WORKDIR ${HOME}/work
+#was work
+WORKDIR ${HOME}/NSBI-workflow-tutorial 
 
 # Install the example for faster startup
 RUN ls
-ADD binder/compressed_mapping.json ${HOME}/work
+ADD binder/compressed_mapping.json ${HOME}/NSBI-workflow-tutorial
 RUN CONDA_OVERRIDE_CUDA=12.5 pixi install --manifest-path pixi.toml
 
 ENTRYPOINT ["/usr/local/share/docker-entrypoint.sh"]
