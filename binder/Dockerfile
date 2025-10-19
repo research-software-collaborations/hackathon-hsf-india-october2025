@@ -1,7 +1,5 @@
 #
-ARG GH_REPO="https://github.com/iris-hep/NSBI-workflow-tutorial"
-ARG GH_BRANCH="workspace_building_feature"
-ARG PIXI_ENV="nsbi-env-gpu"
+
 #
 # Taken from https://github.com/renan-r-santos/pixi-kernel-binder
 #
@@ -10,9 +8,10 @@ ARG PIXI_ENV="nsbi-env-gpu"
 ###################################################################################################
 FROM ghcr.io/prefix-dev/pixi:0.56.0-jammy as pixi-builder
 #
-ARG GH_REPO
-ARG GH_BRANCH
-ARG PIXI_ENV
+ARG GH_REPO="https://github.com/iris-hep/NSBI-workflow-tutorial"
+ARG GH_BRANCH="workspace_building_feature"
+ARG PIXI_ENV="nsbi-env-gpu"
+
 #
 
 WORKDIR /opt/binder
@@ -43,9 +42,9 @@ RUN sed -i 's/PIXI_ENVIRONMENT_NAME=default/PIXI_ENVIRONMENT_NAME=${PIXI_ENV}/' 
 ###################################################################################################
 FROM ghcr.io/prefix-dev/pixi:0.56.0-jammy
 
-ARG GH_REPO
-ARG GH_BRANCH
-ARG PIXI_ENV
+ARG GH_REPO="https://github.com/iris-hep/NSBI-workflow-tutorial"
+ARG GH_BRANCH="workspace_building_feature"
+ARG PIXI_ENV="nsbi-env-gpu"
 
 RUN apt-get update -y
 RUN apt-get install -y git wget
