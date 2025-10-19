@@ -61,7 +61,7 @@ COPY binder/pixi.toml ${HOME}/
 #COPY binder/work/* ${HOME}/work/
 
 #RUN cd ${HOME}/work 
-RUN git clone -b workspace_building_feature https://github.com/iris-hep/NSBI-workflow-tutorial
+RUN cd ${HOME}; git clone -b workspace_building_feature https://github.com/iris-hep/NSBI-workflow-tutorial; ls NSBI-workflow-tutorial
 
 RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
