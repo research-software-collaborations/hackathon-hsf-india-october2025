@@ -68,6 +68,11 @@ USER ${NB_USER}
 COPY --from=pixi-builder /opt/binder/.pixi /opt/binder/.pixi
 COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
 
+RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
+RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
+RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
+RUN jupyter kernelspec uninstall pixi-kernel-ir
+
 WORKDIR ${HOME}/NSBI-workflow-tutorial 
 
 # Install the example for faster startup
