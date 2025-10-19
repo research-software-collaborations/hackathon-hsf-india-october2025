@@ -11,7 +11,7 @@ WORKDIR /opt/binder
 
 # Install environment
 COPY binder/pixi.toml pixi.toml
-COPY binder/pixi.lock pixi.lock
+#COPY binder/pixi.lock pixi.lock
 COPY binder/compressed_mapping.json compressed_mapping.json
 
 #RUN pixi lock --check
