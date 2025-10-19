@@ -62,16 +62,16 @@ RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
     chown -R ${NB_UID} ${HOME}
 
+RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
+RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
+RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
+RUN jupyter kernelspec uninstall pixi-kernel-ir
+
 USER ${NB_USER}
 
 # Copy the environment
 COPY --from=pixi-builder /opt/binder/.pixi /opt/binder/.pixi
 COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
-
-RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
-RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
-RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
-RUN jupyter kernelspec uninstall pixi-kernel-ir
 
 WORKDIR ${HOME}/NSBI-workflow-tutorial 
 
