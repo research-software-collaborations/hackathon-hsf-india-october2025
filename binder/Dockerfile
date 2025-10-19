@@ -1,4 +1,8 @@
 #
+ARG GH_REPO="https://github.com/iris-hep/NSBI-workflow-tutorial"
+ARG GH_BRANCH="workspace_building_feature"
+ARG PIXI_ENV="nsbi-env-gpu"
+#
 #
 # Taken from https://github.com/renan-r-santos/pixi-kernel-binder
 #
@@ -28,7 +32,7 @@ RUN pixi install && \
 RUN find .pixi \( -name '*.a' -o -name '*.pyc' -o -name '*.pyx' -o -name '*.pyo' \) -delete && \
     find .pixi -name '__pycache__' -type d -exec rm -rf '{}' '+'
 
-RUN sed -i 's/PIXI_ENVIRONMENT_NAME=default/PIXI_ENVIRONMENT_NAME=nsbi-env-gpu/' /pixi-activate.sh
+RUN sed -i 's/PIXI_ENVIRONMENT_NAME=default/PIXI_ENVIRONMENT_NAME=${PIXI_ENV}/' /pixi-activate.sh
 
 ###################################################################################################
 # Final image
@@ -60,7 +64,7 @@ COPY binder/jupyter_config.py ${HOME}/
 COPY binder/pixi.lock ${HOME}/
 COPY binder/pixi.toml ${HOME}/
 
-RUN cd ${HOME}; git clone -b workspace_building_feature https://github.com/iris-hep/NSBI-workflow-tutorial
+RUN cd ${HOME}; git clone -b ${GH_BRANCH} ${GH_REPO}
 
 RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
@@ -75,6 +79,6 @@ COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
 WORKDIR ${HOME}/NSBI-workflow-tutorial 
 
 # Install the example for faster startup
-RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e nsbi-env-gpu --manifest-path pixi.toml
+RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e ${PIXI_ENV} --manifest-path pixi.toml
 
 ENTRYPOINT ["git pull; /usr/local/share/docker-entrypoint.sh"]
