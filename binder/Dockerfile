@@ -62,10 +62,10 @@ RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
     chown -R ${NB_UID} ${HOME}
 
-RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
-RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
-RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
-RUN jupyter kernelspec uninstall pixi-kernel-ir
+#RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
+#RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
+#RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
+#RUN jupyter kernelspec uninstall pixi-kernel-ir
 
 USER ${NB_USER}
 
