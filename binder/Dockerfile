@@ -17,6 +17,10 @@ COPY binder/compressed_mapping.json compressed_mapping.json
 #RUN pixi lock --check
 RUN pixi install && \
     pixi run jupyter kernelspec uninstall python3 -y && \
+    pixi run jupyter kernelspec uninstall pixi-kernel-xcpp11 \
+    pixi run jupyter kernelspec uninstall pixi-kernel-xcpp14 \
+    pixi run jupyter kernelspec uninstall pixi-kernel-xcpp17 \
+    pixi run jupyter kernelspec uninstall pixi-kernel-ir \ 
     pixi shell-hook --shell bash > /pixi-activate.sh && \
     chmod +x /pixi-activate.sh
 
@@ -61,11 +65,6 @@ RUN cd ${HOME}; git clone -b workspace_building_feature https://github.com/iris-
 RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
     chown -R ${NB_UID} ${HOME}
-
-#RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
-#RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
-#RUN jupyter kernelspec uninstall pixi-kernel-xcpp11
-#RUN jupyter kernelspec uninstall pixi-kernel-ir
 
 USER ${NB_USER}
 
