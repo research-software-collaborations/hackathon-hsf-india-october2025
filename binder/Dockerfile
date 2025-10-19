@@ -67,6 +67,7 @@ COPY --from=pixi-builder /opt/binder/.pixi /opt/binder/.pixi
 COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
 RUN cp /usr/local/share/pixi-activate.sh /tmp;
 RUN sed -i 's/PIXI_ENVIRONMENT_NAME=default/PIXI_ENVIRONMENT_NAME=nsbi-env-gpu/' /tmp/pixi-activate.sh
+RUN whoami
 RUN mv /tmp/pixi-activate.sh /usr/local/share/pixi-activate.sh
 WORKDIR ${HOME}/NSBI-workflow-tutorial 
 
