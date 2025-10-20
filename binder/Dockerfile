@@ -71,6 +71,7 @@ RUN echo '#!/bin/bash\n. /usr/local/share/pixi-activate.sh\n git pull\n exec "$@
 
 # Make sure the contents of this repo are in ${HOME} and owned by ${NB_USER}
 COPY binder/jupyter_config.py ${HOME}/
+RUN echo "c.MappingKernelManager.default_kernel_name='pixi-kernel-python3'" >> ${HOME}/jupyter_config.py
 COPY binder/pixi.lock ${HOME}/
 COPY binder/pixi.toml ${HOME}/
 
