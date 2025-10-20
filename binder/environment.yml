@@ -1,12 +1,13 @@
 name: hsf-india
 channels:
-  - defaults
+  - conda-forge
 dependencies:
   - python
   - pip
   - cmake 
   - openssh 
   - singularity
+  - ncurses
   - pip:
       - jupyterlab-deck
       - jupyterlab-mathjax3
