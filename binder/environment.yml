@@ -7,7 +7,7 @@ dependencies:
   - cmake 
   - openssh 
   - singularity
-  - ncurses
+#  - ncurses
   - pip:
       - jupyterlab-deck
       - jupyterlab-mathjax3
