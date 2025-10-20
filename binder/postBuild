@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-#python -m bash_kernel.install
+python -m bash_kernel.install
 
 #lets install eic software
 mkdir eic
