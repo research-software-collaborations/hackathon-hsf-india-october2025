@@ -5,7 +5,7 @@ dependencies:
   - python==3.12
   - pip
   - cmake 
-  - openssh 
+  - openssh   
   - jupyter-server-proxy
   - python-build
   - code-server >=3.2
