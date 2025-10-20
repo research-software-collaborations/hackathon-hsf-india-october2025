@@ -38,7 +38,7 @@ RUN pixi install && \
 RUN find .pixi \( -name '*.a' -o -name '*.pyc' -o -name '*.pyx' -o -name '*.pyo' \) -delete && \
     find .pixi -name '__pycache__' -type d -exec rm -rf '{}' '+'
 
-RUN sed -i 's/PIXI_ENVIRONMENT_NAME=default/PIXI_ENVIRONMENT_NAME='"${YOUTUBE_KEY}"'/' /pixi-activate.sh
+RUN sed -i 's/PIXI_ENVIRONMENT_NAME=default/PIXI_ENVIRONMENT_NAME='"${PIXI_ENV}"'/' /pixi-activate.sh
 RUN cat /pixi-activate.sh
 ###################################################################################################
 # Final image
