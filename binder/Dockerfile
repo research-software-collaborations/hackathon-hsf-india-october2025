@@ -66,7 +66,7 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
-RUN echo '#!/bin/bash\n. /usr/local/share/pixi-activate.sh\nexec "$@"' > /usr/local/share/docker-entrypoint.sh && \
+RUN echo '#!/bin/bash\n. /usr/local/share/pixi-activate.sh\n git pull\n exec "$@"' > /usr/local/share/docker-entrypoint.sh && \
     chmod +x /usr/local/share/docker-entrypoint.sh
 
 # Make sure the contents of this repo are in ${HOME} and owned by ${NB_USER}
