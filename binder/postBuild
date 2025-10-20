@@ -4,9 +4,9 @@ set -e
 #python -m bash_kernel.install
 
 #lets install eic software
-#mkdir eic
-#cd ~/eic
-# curl --location https://get.epic-eic.org | bash
-touch hi.there
+mkdir eic
+cd ~/eic
+curl --location https://get.epic-eic.org | bash
+
 # pip appears to leave behind 4GB of stuff.. lets remove it.
 pip cache purge
