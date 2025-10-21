@@ -1,8 +1,8 @@
-name: hsf-india-python
+name: hsf-india-julia
 channels:
   - conda-forge
-  - defaults
 dependencies:
+  - python=3.12.*
   - jupyterlab-book
   - jupyterlab
   - jupytext
