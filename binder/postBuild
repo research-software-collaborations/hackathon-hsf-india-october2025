@@ -4,7 +4,7 @@ set -e
 juliaup add release
 which julia > juliacheck.log
 
-packages=("\"AwkwardArray\"" "IJulia" "Geant4" "BAT" "CairoMakie" "Plots")
+packages=("AwkwardArray" "IJulia" "Geant4" "BAT" "CairoMakie" "Plots")
 packages+=("StatsBase" "BenchmarkTools" "Measurements" "OhMyThreads" "Unitful")
 packages+=("TypedTables" "Distributions" "DistributionsHEP" "DataFrames")
 packages+=("FHist" "GeometryBasics" "IGLWrap_jll" "LinearAlgebra" "Parameters")
@@ -13,7 +13,7 @@ packages+=("Printf" "Rotations" "StaticArrays")
 for i in $packages;
 do
     echo $i
-    julia -e 'using Pkg; Pkg.add('$i')'
+    julia -e 'using Pkg; Pkg.add("'$i'")'
 done
 
 
