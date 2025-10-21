@@ -3,17 +3,18 @@ set -e
 
 juliaup add release
 which julia > juliacheck.log
-julia -e 'using Pkg; Pkg.add("AwkwardArray")' 
-julia -e 'using Pkg; Pkg.add("IJulia")'
-julia -e 'using Pkg; Pkg.add("Geant4")'
-julia -e 'using Pkg; Pkg.add("BAT")'
-julia -e 'using Pkg; Pkg.add("CairoMakie")'
-julia -e 'using Pkg; Pkg.add("Plots")'
-julia -e 'using Pkg; Pkg.add("StatsBase")'
-julia -e 'using Pkg; Pkg.add("BenchmarkTools")'
-julia -e 'using Pkg; Pkg.add("Measurements")'
-julia -e 'using Pkg; Pkg.add("OhMyThreads")'
-julia -e 'using Pkg; Pkg.add("Unitful")'
-julia -e 'using Pkg; Pkg.add("TypedTables")'
-julia -e 'using Pkg; Pkg.add("Distributions")'
-julia -e 'using Pkg; Pkg.add("DistributionsHEP")'
+
+packages = ("AwkwardArray" "IJulia" "Geant4" "BAT" "CairoMakie" "Plots")
+packages += ("StatsBase" "BenchmarkTools "Measurements" "OhMyThreads" "Unitful")
+packages += ("TypedTables" "Distributions" DistributionsHEP" "DataFrames")
+packages += ("FHist" "GeometryBasics" "IGLWrap_jll" "LinearAlgebra" "Parameters")
+packages += ("Printf" "Rotations" "StaticArrays")
+
+for i in $packages;
+do
+    echo $i
+    julia -e 'using Pkg; Pkg.add($i)'
+done
+
+
+
