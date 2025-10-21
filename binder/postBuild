@@ -8,7 +8,7 @@ packages=("AwkwardArray" "IJulia" "Geant4" "BAT" "CairoMakie" "Plots" "CSV")
 packages+=("StatsBase" "BenchmarkTools" "Measurements" "OhMyThreads" "Unitful")
 packages+=("TypedTables" "Distributions" "DistributionsHEP" "DataFrames")
 packages+=("FHist" "GeometryBasics" "IGLWrap_jll" "LinearAlgebra" "Parameters")
-packages+=("Printf" "Rotations" "StaticArrays" "Zygote")
+packages+=("Printf" "Rotations" "StaticArrays" "Zygote" "StatsPlots")
 
 comm="["
 for i in "${packages[@]}"
