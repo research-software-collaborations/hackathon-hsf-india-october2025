@@ -50,7 +50,7 @@ jupyter-book build ./docs
 
 cd ../../
 touch tutorials.html > tutorials.html
-echo "<!DOCTYPE html >> tutorials.html
+echo "<!DOCTYPE html>" >> tutorials.html
 echo "<html>" >> tutorials.html
 echo "  <head>" >> tutorials.html
 echo "  </head>" >> tutorials.html
