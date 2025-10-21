@@ -24,18 +24,37 @@ git clone https://github.com/JuliaHEP/Hands-on-Julia-for-particle-physicists
 
 cd Hands-on-Julia-for-particle-physicists/
 rm Project.toml
-cd julia-intro 
+cd julia-intro/docs 
+
+sed -i s/julia-1.11/julia-1.12/ *.ipynb
+sed -i s/Julia-1.11.6/Julia-1.12/ *.ipynb
+sed -i s/Julia-1.11.6/Julia-1.12/ */*.ipynb
+sed -i s/julia-1.11/julia-1.12/ */*.ipynb
+cd ..
+
+jupyter-book build ./docs > log.book
+
+cd ../../
+ln -s Hands-on-Julia-for-particle-physicists/julia-intro/docs/_build/html/00-intro.html HandsOnIntro.html
+##############
+
+
+git clone https://github.com/peremato/Geant4.jl-tutorial/
+
+cd Geant4.jl-tutorial/
+rm Project.toml
+cd tutorial/docs 
 
 sed -i s/julia-1.11/julia-1.12/ *.ipynb
 sed -i s/Julia-1.11.6/Julia-1.12/ *.ipynb
 sed -i s/Julia-1.11.6/Julia-1.12/ */*.ipynb
 sed -i s/julia-1.11/julia-1.12/ */*.ipynb
 
+cd ..
 jupyter-book build ./docs > log.book
 
 cd ../../
-ln -s Hands-on-Julia-for-particle-physicists/julia-intro/docs/_build/html/00-intro.html HandsOnIntro.html
-
+ln -s Geant4.jl-tutorial/tutorial/docs/_build/html/01-introduction.ipynb Geant4.ipynb
 
 
 
