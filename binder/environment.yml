@@ -11,5 +11,5 @@ dependencies:
   - vim
   - juliaup
   - pyjuliacall
-- pip:
-  - jupyterlab-rise
+  - pip:
+    - jupyterlab-rise
