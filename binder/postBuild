@@ -32,12 +32,10 @@ sed -i s/Julia-1.11.6/Julia-1.12/ */*.ipynb
 sed -i s/julia-1.11/julia-1.12/ */*.ipynb
 cd ..
 
-jupyter-book build ./docs > log.book
+jupyter-book build ./docs 
 
 cd ../../
-ln -s Hands-on-Julia-for-particle-physicists/julia-intro/docs/_build/html/00-intro.html HandsOnIntro.html
 ##############
-
 
 git clone https://github.com/peremato/Geant4.jl-tutorial/
 
@@ -47,10 +45,10 @@ cd tutorial/docs
 
 sed -i s/julia-1.11/julia-1.12/ `find . -name \*.ipynb`
 sed -i s/Julia-1.11.6/Julia-1.12/ `find . -name \*.ipynb`
-
 cd ..
-jupyter-book build ./docs > log.book
+jupyter-book build ./docs
 
+cd ../../
 touch tutorials.html > tutorials.html
 echo "<!DOCTYPE html >> tutorials.html
 echo "<html>" >> tutorials.html
@@ -60,18 +58,12 @@ echo " " >> tutorials.html
 echo "  <body>" >> tutorials.html
 echo "    <h1>Julia tutorials</h1>" >> tutorials.html
 echo "    <ul>" >> tutorials.html
-echo "    <li> <a href="HandsOnIntro/index.html">Hands on intro</a>" >> tutorials.html
+echo "    <li> <a href="Hands-on-Julia-for-particle-physicists/julia-intro/docs/_build/html/index.html">Hands on intro</a>" >> tutorials.html
+echo "    <li> <a href="Geant4.jl-tutorial/tutorial/docs/_build/html/index.html">Geant4 tutorial</a>" >> tutorials.html
 echo "    </ul>"  >> tutorials.html
-
-       
-  </body>
-</html>
-
-
-
-cd ../../
-#ln -s Geant4.jl-tutorial/tutorial/docs/_build/html/01-introduction.ipynb Geant4.ipynb
-
+echo " " >> tutorials.html      
+echo "  </body> " >> tutorials.html
+echo "</html> " >> tutorials.html
 
 
 
