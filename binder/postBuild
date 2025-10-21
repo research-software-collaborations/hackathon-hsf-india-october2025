@@ -13,7 +13,6 @@ packages+=("Printf" "Rotations" "StaticArrays")
 comm="["
 for i in "${packages[@]}"
 do
-    echo $i
     comm+="\""$i"\","    
 done
 comm+="]"
