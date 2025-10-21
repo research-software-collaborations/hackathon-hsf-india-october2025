@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+git clone https://github.com/peremato/Geant4.jl-tutorial
+git clone https://github.com/JuliaHEP/Hands-on-Julia-for-particle-physicists
+
+exec "$@"
