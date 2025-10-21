@@ -20,6 +20,23 @@ echo $comm
 
 julia -e 'using Pkg; Pkg.add('$comm')'
 
+git clone https://github.com/JuliaHEP/Hands-on-Julia-for-particle-physicists
+
+cd Hands-on-Julia-for-particle-physicists/
+rm Project.toml
+cd julia-intro 
+
+sed -i s/julia-1.11/julia-1.12/ *.ipynb
+sed -i s/Julia-1.11.6/Julia-1.12/ *.ipynb
+sed -i s/Julia-1.11.6/Julia-1.12/ */*.ipynb
+sed -i s/julia-1.11/julia-1.12/ */*.ipynb
+
+jupyter-book build ./docs > log.book
+
+cd ../../
+ln -s Hands-on-Julia-for-particle-physicists/julia-intro/docs/_build/html/00-intro.html HandsOnIntro.html
+
+
 
 
 
