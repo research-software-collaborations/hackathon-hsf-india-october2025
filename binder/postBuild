@@ -10,7 +10,7 @@ packages+=("TypedTables" "Distributions" "DistributionsHEP" "DataFrames")
 packages+=("FHist" "GeometryBasics" "IGLWrap_jll" "LinearAlgebra" "Parameters")
 packages+=("Printf" "Rotations" "StaticArrays")
 
-for Item in ${packages[*]};
+for i in "${tweaks[@]}"
 do
     echo $i
     julia -e 'using Pkg; Pkg.add("'$i'")'
