@@ -10,11 +10,30 @@ packages+=("TypedTables" "Distributions" "DistributionsHEP" "DataFrames")
 packages+=("FHist" "GeometryBasics" "IGLWrap_jll" "LinearAlgebra" "Parameters")
 packages+=("Printf" "Rotations" "StaticArrays")
 
+comm="["
 for i in "${packages[@]}"
 do
     echo $i
-    julia -e 'using Pkg; Pkg.add("'$i'")'
+    comm+="\""+$i+"\", "
+    
 done
+comm+="]"
+echo $comm
+
+julia -e 'using Pkg; Pkg.add('$comm')'
+
+
+#packages=("AwkwardArray" "IJulia" "Geant4" "BAT" "CairoMakie" "Plots")
+#packages+=("StatsBase" "BenchmarkTools" "Measurements" "OhMyThreads" "Unitful")
+#packages+=("TypedTables" "Distributions" "DistributionsHEP" "DataFrames")
+#packages+=("FHist" "GeometryBasics" "IGLWrap_jll" "LinearAlgebra" "Parameters")
+#packages+=("Printf" "Rotations" "StaticArrays")
+#
+#for i in "${packages[@]}"
+#do
+#    echo $i
+#    julia -e 'using Pkg; Pkg.add("'$i'")'
+#done
 
 
 
