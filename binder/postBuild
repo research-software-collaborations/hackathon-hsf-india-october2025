@@ -49,10 +49,10 @@ sed -i s/julia-1.11/julia-1.12/ *.ipynb
 sed -i s/Julia-1.11.6/Julia-1.12/ *.ipynb
 
 cd ..
-jupyter-book build ./docs > log.book
+#jupyter-book build ./docs > log.book
 
 cd ../../
-ln -s Geant4.jl-tutorial/tutorial/docs/_build/html/01-introduction.ipynb Geant4.ipynb
+#ln -s Geant4.jl-tutorial/tutorial/docs/_build/html/01-introduction.ipynb Geant4.ipynb
 
 
 
