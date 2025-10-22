@@ -50,8 +50,7 @@ ARG GH_BRANCH
 ARG PIXI_ENV
 
 RUN apt-get update -y
-RUN apt-get install -y git wget 
-#emacs vim nano
+RUN apt-get install -y git wget emacs vim nano
 RUN apt-get update -y
 
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
@@ -91,6 +90,6 @@ COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
 WORKDIR ${HOME}/NSBI-workflow-tutorial 
 
 # Install the example for faster startup
-RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e ${PIXI_ENV} --manifest-path pixi.toml
+#RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e ${PIXI_ENV} --manifest-path pixi.toml
 
 ENTRYPOINT ["/usr/local/share/docker-entrypoint.sh"]
