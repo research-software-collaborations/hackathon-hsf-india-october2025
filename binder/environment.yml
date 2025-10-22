@@ -9,7 +9,7 @@ dependencies:
   - apptainer 
   - ncurses
   - vim
-  - emacs
+  #- emacs - doesnt get along with xrootd...
   - nano
   - ipykernel
   - pip:
