@@ -5,13 +5,14 @@ dependencies:
   - python==3.12
   - pip
 #  - cmake 
-  - openssh 
+#  - openssh 
   - apptainer 
 #  - ncurses
 #  - vim
   - emacs #- doesnt get along with xrootd...
 #  - nano
   - ipykernel
+  - fsspec-xrootd
   - xrootd
   - pip:
 #      - jupyterlab-deck
@@ -19,9 +20,8 @@ dependencies:
 #      - matplotlib     
 #      - numpy
       - requests
-#      - uproot
-      - fsspec-xrootd
-      - xrootd
+#      - uproot     
+#      - xrootd
 #      - particle
 #      - scipy
 #      - pandas
