@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-#this is causing problems in the environment.. lets do it last
-pip install xrootd
-
 python -m bash_kernel.install
 
 #lets install eic software
