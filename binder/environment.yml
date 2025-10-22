@@ -9,7 +9,7 @@ dependencies:
   - singularity
   - ncurses
   - vim
-  - emacs
+  #- emacs
   - nano
   - ipykernel
   #- xrootd
@@ -21,7 +21,7 @@ dependencies:
       - requests
       - uproot
       - fsspec-xrootd
-      #- xrootd
+      - xrootd
       - particle
       - scipy
       - pandas
