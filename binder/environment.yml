@@ -13,6 +13,7 @@ dependencies:
   - nano
   - ipykernel
   - libuuid
+  - zlib
   - pip:
       - jupyterlab-deck
       - jupyterlab-mathjax3
