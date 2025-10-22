@@ -4,8 +4,8 @@ channels:
 dependencies:
   - python==3.12
   - pip
-#  - cmake 
-#  - openssh 
+  - cmake 
+  - openssh 
   - apptainer 
   - ncurses
   - vim
@@ -16,17 +16,16 @@ dependencies:
   - xrootd
   - pip:
 #      - jupyterlab-deck
-#      - jupyterlab-mathjax3
-#      - matplotlib     
-#      - numpy
+      - jupyterlab-mathjax3
+      - matplotlib     
+      - numpy
       - requests
-#      - uproot     
-#      - xrootd
-#      - particle
-#      - scipy
-#      - pandas
-#      - vector
-#      - bash_kernel
+      - uproot     
+      - particle
+      - scipy
+      - pandas
+      - vector
+      - bash_kernel
      
 variables:
   LD_LIBRARY_PATH: "'$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/'"
