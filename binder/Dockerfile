@@ -50,7 +50,8 @@ ARG GH_BRANCH
 ARG PIXI_ENV
 
 RUN apt-get update -y
-RUN apt-get install -y git wget emacs vim nano
+RUN apt-get install -y git wget 
+#emacs vim nano
 RUN apt-get update -y
 
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
