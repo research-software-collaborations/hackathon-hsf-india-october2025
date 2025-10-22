@@ -12,7 +12,7 @@ dependencies:
   - emacs
   - nano
   - ipykernel
-  - xrootd
+  #- xrootd
   - pip:
       - jupyterlab-deck
       - jupyterlab-mathjax3
