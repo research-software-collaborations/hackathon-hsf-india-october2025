@@ -9,9 +9,11 @@ dependencies:
   - apptainer 
   - ncurses
   - vim
-  #- emacs - doesnt get along with xrootd...
+  - emacs - doesnt get along with xrootd...
   - nano
   - ipykernel
+  - fsspec-xrootd
+  - xrootd
   - pip:
       - jupyterlab-deck
       - jupyterlab-mathjax3
@@ -19,8 +21,6 @@ dependencies:
       - numpy
       - requests
       - uproot
-      - fsspec-xrootd
-      - xrootd
       - particle
       - scipy
       - pandas
