@@ -20,7 +20,7 @@ dependencies:
       - requests
       - uproot
       - fsspec-xrootd
-      - xrootd
+      - xrootd==5.8.4
       - particle
       - scipy
       - pandas
