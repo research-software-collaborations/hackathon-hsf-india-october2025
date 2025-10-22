@@ -7,10 +7,10 @@ dependencies:
 #  - cmake 
 #  - openssh 
   - apptainer 
-#  - ncurses
-#  - vim
+  - ncurses
+  - vim
   - emacs #- doesnt get along with xrootd...
-#  - nano
+  - nano
   - ipykernel
   - fsspec-xrootd
   - xrootd
