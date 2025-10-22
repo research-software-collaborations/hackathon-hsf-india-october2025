@@ -10,6 +10,8 @@ dependencies:
   - nbconvert
   - jupyterlab-mathjax3
   - vim
+  - emacs
+  - nano
   - juliaup
   - pyjuliacall
   - pip:
