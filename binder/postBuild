@@ -9,6 +9,8 @@ packages+=("StatsBase" "BenchmarkTools" "Measurements" "OhMyThreads" "Unitful")
 packages+=("TypedTables" "Distributions" "DistributionsHEP" "DataFrames")
 packages+=("FHist" "GeometryBasics" "IGLWrap_jll" "LinearAlgebra" "Parameters")
 packages+=("Printf" "Rotations" "StaticArrays" "Zygote" "StatsPlots")
+packages+=("UnROOT" "QuadGK" "Optimization" "OptimizationLBFGSB" "ForwardDiff")
+packages+=("DensityInterface" "ValueShapes" "IntervalSets", "Revise")
 
 comm="["
 for i in "${packages[@]}"
