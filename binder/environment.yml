@@ -12,6 +12,7 @@ dependencies:
   - emacs
   - nano
   - ipykernel
+  - uuid
   - pip:
       - jupyterlab-deck
       - jupyterlab-mathjax3
@@ -20,7 +21,7 @@ dependencies:
       - requests
       - uproot
       - fsspec-xrootd
-      - xrootd==5.8.4
+      - xrootd
       - particle
       - scipy
       - pandas
