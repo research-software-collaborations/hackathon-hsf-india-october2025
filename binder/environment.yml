@@ -6,13 +6,12 @@ dependencies:
   - pip
   - cmake 
   - openssh 
-  - apptainer #singularity
+  - apptainer 
   - ncurses
   - vim
-  #- emacs
+  - emacs
   - nano
   - ipykernel
-  #- xrootd
   - pip:
       - jupyterlab-deck
       - jupyterlab-mathjax3
