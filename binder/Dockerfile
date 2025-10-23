@@ -9,7 +9,7 @@ RUN apt-get update -y
 
 #emacs nano 
 #vim
-RUN apt-get install -y apptainer-suid
+RUN apt-get install -y apptainer
 
 # install the notebook package
 RUN pip install --no-cache --upgrade pip && \
