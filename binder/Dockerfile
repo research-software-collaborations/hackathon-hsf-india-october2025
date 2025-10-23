@@ -1,4 +1,4 @@
-FROM ubunto:jammy
+FROM ubuntu:jammy
 
 RUN apt-get update -y
 RUN apt-get install -y git pip wget emacs nano vim
