@@ -6,7 +6,7 @@ dependencies:
   - pip
   - cmake 
   - openssh 
-  - apptainer 
+  - singularity #seems problems with apptainer..apptainer 
   - ncurses
   - vim
   - emacs #- doesnt get along with xrootd...
