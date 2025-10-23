@@ -1,12 +1,11 @@
 FROM ubuntu:jammy
 
+RUN apt install -y software-properties-common
+RUN add-apt-repository -y ppa:apptainer/ppa
 RUN apt-get update -y
 RUN apt-get install -y git pip wget 
 #emacs nano 
 #vim
-RUN apt install -y software-properties-common
-RUN add-apt-repository -y ppa:apptainer/ppa
-RUN apt-get update -y
 RUN apt-get install -y apptainer
 
 # install the notebook package
