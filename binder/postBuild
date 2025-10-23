@@ -12,4 +12,4 @@ curl --location https://get.epic-eic.org | bash
 pip cache purge
 
 # and apptainer leaves behind 10GB of stuff
-apptainer cache clean
+apptainer cache clean -f
