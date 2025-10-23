@@ -1,4 +1,5 @@
-FROM ubuntu:jammy
+FROM ubuntu:24.04 
+#jammy
 
 RUN apt-get update -y
 RUN apt-get install -y git pip wget 
