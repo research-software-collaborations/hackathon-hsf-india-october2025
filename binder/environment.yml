@@ -9,7 +9,7 @@ dependencies:
   - singularity #seems problems with apptainer..apptainer 
   - ncurses
   - vim
-  - emacs #- doesnt get along with xrootd...
+  #- emacs #- doesnt get along with xrootd...
   - nano
   - ipykernel
   - fsspec-xrootd
