@@ -10,7 +10,7 @@ dependencies:
   - ncurses
   - vim
   #- emacs #- doesnt get along with xrootd...
-  - nano
+  #- nano
   - ipykernel
   - fsspec-xrootd
   - xrootd
