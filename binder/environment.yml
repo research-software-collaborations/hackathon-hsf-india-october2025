@@ -6,14 +6,14 @@ dependencies:
   - pip
   - cmake 
   - openssh 
-  - singularity #seems problems with apptainer..apptainer 
+  - apptainer 
   - ncurses
   - vim
   - emacs #- doesnt get along with xrootd...
   - nano
   - ipykernel
   - fsspec-xrootd
-  #- xrootd
+  - xrootd
   - pip:
       - jupyterlab-deck
       - jupyterlab-mathjax3
