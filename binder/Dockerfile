@@ -15,7 +15,7 @@ RUN apt-get install -y apptainer
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook jupyterlab
 
-RUN pip install --no-cache numba awkward uproot matplotlib h5py hist
+#RUN pip install --no-cache numba awkward uproot matplotlib h5py hist
 
 
 # create user with a home directory
