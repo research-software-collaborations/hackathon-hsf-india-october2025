@@ -13,8 +13,8 @@ RUN apt-get update -y
 RUN apt-get install -y apptainer
 
 # install the notebook package
-RUN pip install --no-cache --upgrade pip 
-RUN pip install --no-cache notebook jupyterlab
+RUN pip install --break-system-packages --no-cache --upgrade pip 
+RUN pip install --break-system-packages --no-cache notebook jupyterlab
 
 #RUN pip install --no-cache numba awkward uproot matplotlib h5py hist
 
