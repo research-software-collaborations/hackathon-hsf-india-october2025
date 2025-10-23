@@ -13,7 +13,7 @@ dependencies:
   #- nano
   - ipykernel
   - fsspec-xrootd
-  - xrootd
+  #- xrootd
   - pip:
       - jupyterlab-deck
       - jupyterlab-mathjax3
