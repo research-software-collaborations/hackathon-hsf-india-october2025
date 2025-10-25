@@ -25,6 +25,6 @@ COPY binder/environment.yml .
 #RUN conda env create -f environment.yml
 
 # Activate the environment, and make sure it's activated:
-RUN conda activate myenv
+#RUN conda activate myenv
 
 WORKDIR ${HOME}
