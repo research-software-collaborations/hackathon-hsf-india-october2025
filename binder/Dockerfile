@@ -17,7 +17,7 @@ USER ${USER}
 
 RUN mkdir ${HOME}/scripts
 COPY binder/entrypoint.sh ${HOME}/scripts
-RUN chmod +x binder/entrypoint.sh
+RUN chmod +x scripts/entrypoint.sh
 ENTRYPOINT ["./scripts/entrypoint.sh"]
 # install conda
 #RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
