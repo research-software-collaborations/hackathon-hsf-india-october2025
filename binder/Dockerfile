@@ -1,8 +1,8 @@
 FROM ghcr.io/eic/eic_xl:nightly
 
-RUN mkdir /tmp/scripts
-COPY binder/entrypoint.sh /tmp/scripts
-RUN chmod +x /tmp/scripts/entrypoint.sh
+RUN mkdir /usr/scripts
+COPY binder/entrypoint.sh /usr/scripts
+RUN chmod +x /usr/scripts/entrypoint.sh
 
 # create user with a home directory
 ARG NB_USER
@@ -19,7 +19,7 @@ RUN adduser --disabled-password \
 WORKDIR ${HOME}
 USER ${USER}
 
-ENTRYPOINT ["/tmp/scripts/entrypoint.sh"]
+ENTRYPOINT ["/usr/scripts/entrypoint.sh"]
 # install conda
 #RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 #RUN bash Miniforge3.sh -b -p "${HOME}/conda"
