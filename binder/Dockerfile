@@ -22,9 +22,9 @@ RUN source ${HOME}/conda/bin/activate
 
 # add our environment
 COPY binder/environment.yml .
-RUN conda env create -f environment.yml
+#RUN conda env create -f environment.yml
 
 # Activate the environment, and make sure it's activated:
-RUN conda activate hsf-india-epic
+#RUN conda activate hsf-india-epic
 
 WORKDIR ${HOME}
