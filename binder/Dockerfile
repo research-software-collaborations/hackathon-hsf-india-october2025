@@ -19,7 +19,8 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
- 
+RUN cat /opt/local/sbin/entrypoint.sh
+RUN which dududud
 WORKDIR ${HOME}
 USER ${USER}
 
