@@ -18,7 +18,7 @@ USER ${USER}
 # install conda
 RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 RUN bash Miniforge3.sh -b -p "${HOME}/conda"
-RUN source ${HOME}/conda/bin/activate; ls ${HOME}/conda/bin/a* ; which conda
+RUN source ${HOME}/conda/bin/activate; ls ${HOME}/conda/bin/a* ; printenv PATH; which conda
 
 # add our environment
 COPY binder/environment.yml .
