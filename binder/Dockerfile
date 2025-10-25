@@ -4,10 +4,6 @@ FROM ghcr.io/eic/eic_xl:nightly
 #COPY binder/entrypoint.sh /usr/scripts
 #RUN chmod +x /usr/scripts/entrypoint.sh
 
-RUN sed 's/bash/bash\n\ngit clone https:\/\/github.com\/eic\/hsf-india\//' /opt/local/sbin/entrypoint.sh
-RUN cat /opt/local/sbin/entrypoint.sh
-
-
 # create user with a home directory
 ARG NB_USER
 ARG NB_UID
@@ -18,6 +14,9 @@ RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
+
+RUN sed 's/bash/bash\n\ngit clone https:\/\/github.com\/eic\/hsf-india\//' /opt/local/sbin/entrypoint.sh
+RUN cat /opt/local/sbin/entrypoint.sh
 
 RUN cat /opt/local/sbin/entrypoint.sh
 RUN which dududud
