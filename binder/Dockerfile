@@ -22,7 +22,7 @@ RUN source "${HOME}/conda/etc/profile.d/conda.sh"
 
 # add our environment
 COPY binder/environment.yml .
-RUN conda env create -f environment.yml
+#RUN conda env create -f environment.yml
 
 # Activate the environment, and make sure it's activated:
 RUN conda activate myenv
