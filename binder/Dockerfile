@@ -19,7 +19,7 @@ RUN adduser --disabled-password \
 WORKDIR ${HOME}
 USER ${USER}
 
-ENTRYPOINT ["/usr/scripts/entrypoint.sh"]
+#ENTRYPOINT ["/usr/scripts/entrypoint.sh"]
 # install conda
 #RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 #RUN bash Miniforge3.sh -b -p "${HOME}/conda"
