@@ -18,7 +18,6 @@ RUN adduser --disabled-password \
 RUN sed -i 's/bash/bash\n\ngit clone https:\/\/github.com\/eic\/hsf-india\//' /opt/local/sbin/entrypoint.sh
 RUN cat /opt/local/sbin/entrypoint.sh
 
-RUN which dududud
 WORKDIR ${HOME}
 USER ${USER}
 
