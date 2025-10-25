@@ -12,6 +12,8 @@ dependencies:
   - emacs
   - nano
   - openssh
+  - notebook 
+  - jupyterlab
   - pip
     - matplotlib
     - awkward-array
