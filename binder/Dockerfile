@@ -1,7 +1,17 @@
 FROM ghcr.io/eic/eic_xl:nightly
 
-RUN apt-get update -y
-RUN apt-get install -y git pip wget vim
+# install conda
+RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+RUN bash Miniforge3.sh -b -p "${HOME}/conda"
+RUN source "${HOME}/conda/etc/profile.d/conda.sh"
+
+# add our environment
+COPY binder/environment.yml .
+RUN conda env create -f environment.yml
+
+# Activate the environment, and make sure it's activated:
+RUN conda activate myenv
+
 
 # install the notebook package
 RUN pip install --no-cache --upgrade pip && \
