@@ -22,8 +22,8 @@ RUN bash Miniforge3.sh -b -p "${HOME}/conda"
 # add our environment
 COPY binder/environment.yml .
 
-RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml; 
+#RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml; 
 
-ENTRYPOINT ["source", "conda/bin/activate;", "conda", "activate", "hsf-india-epic"]
+#ENTRYPOINT ["source", "conda/bin/activate;", "conda", "activate", "hsf-india-epic"]
 
 WORKDIR ${HOME}
