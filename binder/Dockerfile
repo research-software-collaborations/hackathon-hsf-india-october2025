@@ -5,6 +5,7 @@ FROM ghcr.io/eic/eic_xl:nightly
 #RUN chmod +x /usr/scripts/entrypoint.sh
 
 RUN sed 's/bash/bash\ngit clone https:\/\/github.com\/eic\/hsf-india\//' /opt/local/sbin/entrypoint.sh
+RUN cat /opt/local/sbin/entrypoint.sh
 
 
 # create user with a home directory
