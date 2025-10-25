@@ -1,0 +1,23 @@
+name: hsf-india-epic
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - ipykernel
+  - fsspec-xrootd
+  - xrootd
+  - cmake
+  - vim
+  - emacs
+  - nano
+  - openssh
+  - pip
+    - matplotlib
+    - awkward-array
+    - uproot
+    - particle
+    - scipy
+    - pandas
+    - vector
+    - bash_kernel
