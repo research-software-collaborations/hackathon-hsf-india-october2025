@@ -16,14 +16,14 @@ WORKDIR ${HOME}
 USER ${USER}
 
 # install conda
-RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-RUN bash Miniforge3.sh -b -p "${HOME}/conda"
+#RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+#RUN bash Miniforge3.sh -b -p "${HOME}/conda"
 
 # add our environment
-COPY binder/environment.yml .
+#COPY binder/environment.yml .
 
 #RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml; 
 
-#ENTRYPOINT ["source", "conda/bin/activate;", "conda", "activate", "hsf-india-epic"]
+ENTRYPOINT ["git", "clone", "https://github.com/eic/HSF-India/"]
 
 WORKDIR ${HOME}
