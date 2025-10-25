@@ -14,7 +14,7 @@ dependencies:
   - openssh
   - notebook 
   - jupyterlab
-  - pip
+  - pip:
     - matplotlib
     - awkward-array
     - uproot
