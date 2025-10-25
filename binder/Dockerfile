@@ -1,8 +1,11 @@
 FROM ghcr.io/eic/eic_xl:nightly
 
-RUN mkdir /usr/scripts
-COPY binder/entrypoint.sh /usr/scripts
-RUN chmod +x /usr/scripts/entrypoint.sh
+#RUN mkdir /usr/scripts
+#COPY binder/entrypoint.sh /usr/scripts
+#RUN chmod +x /usr/scripts/entrypoint.sh
+
+sed s/bash/bash\ngit clone https://github.com/eic/hsf-india/' /opt/local/sbin/entrypoint.sh
+
 
 # create user with a home directory
 ARG NB_USER
