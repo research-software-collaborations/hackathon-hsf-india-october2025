@@ -15,6 +15,10 @@ RUN adduser --disabled-password \
 WORKDIR ${HOME}
 USER ${USER}
 
+RUN mkdir ${HOME}/scripts
+COPY binder/entrypoint.sh ${HOME}/scripts
+RUN chmod +x binder/entrypoint.sh
+ENTRYPOINT ["./scripts/entrypoint.sh"]
 # install conda
 #RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 #RUN bash Miniforge3.sh -b -p "${HOME}/conda"
@@ -23,7 +27,5 @@ USER ${USER}
 #COPY binder/environment.yml .
 
 #RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml; 
-
-ENTRYPOINT ["git", "clone", "https://github.com/eic/HSF-India/"]
 
 WORKDIR ${HOME}
