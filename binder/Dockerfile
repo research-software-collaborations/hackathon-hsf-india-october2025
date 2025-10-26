@@ -1,5 +1,6 @@
 #
-ARG GH_REPO="https://github.com/iris-hep/NSBI-workflow-tutorial"
+ARG GH_ORG="https://github.com/iris-hep/"
+ARG GH_REPO="NSBI-workflow-tutorial"
 ARG GH_BRANCH="workspace_building_feature"
 ARG PIXI_ENV="nsbi-env-gpu"
 
@@ -38,8 +39,8 @@ RUN pixi install && \
 RUN find .pixi \( -name '*.a' -o -name '*.pyc' -o -name '*.pyx' -o -name '*.pyo' \) -delete && \
     find .pixi -name '__pycache__' -type d -exec rm -rf '{}' '+'
 
-RUN sed -i 's/PIXI_ENVIRONMENT_NAME=default/PIXI_ENVIRONMENT_NAME='"${PIXI_ENV}"'/' /pixi-activate.sh
-RUN cat /pixi-activate.sh
+#RUN sed -i 's/PIXI_ENVIRONMENT_NAME=default/PIXI_ENVIRONMENT_NAME='"${PIXI_ENV}"'/' /pixi-activate.sh
+#RUN cat /pixi-activate.sh
 ###################################################################################################
 # Final image
 ###################################################################################################
@@ -66,7 +67,7 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
-RUN echo '#!/bin/bash\n. /usr/local/share/pixi-activate.sh\n git pull\n exec "$@"' > /usr/local/share/docker-entrypoint.sh && \
+RUN echo '#!/bin/bash\n. /usr/local/share/pixi-activate.sh\n cd \n git pull\n cd ..\n exec "$@"' > /usr/local/share/docker-entrypoint.sh && \
     chmod +x /usr/local/share/docker-entrypoint.sh
 
 # Make sure the contents of this repo are in ${HOME} and owned by ${NB_USER}
@@ -75,7 +76,9 @@ RUN echo "c.MappingKernelManager.default_kernel_name='pixi-kernel-python3'" >> $
 COPY binder/pixi.lock ${HOME}/
 COPY binder/pixi.toml ${HOME}/
 
-RUN cd ${HOME}; git clone -b ${GH_BRANCH} ${GH_REPO}
+#RUN cd ${HOME}; git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}
+RUN echo "extramojo = { git = \"${GH_ORG}/${GH_REPO} }\"" >> ${HOME}/pixi.toml
+RUN cat ${HOME}/pixi.toml
 
 RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
@@ -87,9 +90,10 @@ USER ${NB_USER}
 COPY --from=pixi-builder /opt/binder/.pixi /opt/binder/.pixi
 COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
 
-WORKDIR ${HOME}/NSBI-workflow-tutorial 
+WORKDIR ${HOME}
+#/NSBI-workflow-tutorial 
 
 # Install the example for faster startup
-RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e ${PIXI_ENV} --manifest-path pixi.toml
+RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e ${PIXI_ENV} --manifest-path ${HOME}/pixi.toml
 
 ENTRYPOINT ["/usr/local/share/docker-entrypoint.sh"]
