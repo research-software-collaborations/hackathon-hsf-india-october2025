@@ -1,5 +1,5 @@
 #
-ARG GH_ORG="https://github.com/iris-hep/"
+ARG GH_ORG="https://github.com/iris-hep"
 ARG GH_REPO="NSBI-workflow-tutorial"
 ARG GH_BRANCH="workspace_building_feature"
 ARG PIXI_ENV="nsbi-env-gpu"
