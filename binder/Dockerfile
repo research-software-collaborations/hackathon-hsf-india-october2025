@@ -13,6 +13,7 @@ ARG PIXI_ENV="nsbi-env-gpu"
 FROM ghcr.io/prefix-dev/pixi:0.56.0-jammy as pixi-builder
 #
 ARG GH_REPO
+ARG GH_ORG
 ARG GH_BRANCH
 ARG PIXI_ENV
 
@@ -47,6 +48,7 @@ RUN find .pixi \( -name '*.a' -o -name '*.pyc' -o -name '*.pyx' -o -name '*.pyo'
 FROM ghcr.io/prefix-dev/pixi:0.56.0-jammy
 
 ARG GH_REPO
+ARG GH_ORG
 ARG GH_BRANCH
 ARG PIXI_ENV
 
@@ -77,7 +79,7 @@ COPY binder/pixi.lock ${HOME}/
 COPY binder/pixi.toml ${HOME}/
 
 #RUN cd ${HOME}; git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}
-RUN echo "extramojo = { git = \"${GH_ORG}/${GH_REPO} }\"" >> ${HOME}/pixi.toml
+RUN echo "extramojo = { git = \"${GH_ORG}/${GH_REPO}\" }" >> ${HOME}/pixi.toml
 RUN cat ${HOME}/pixi.toml
 
 RUN mkdir -p ${HOME}/.jupyter && \
