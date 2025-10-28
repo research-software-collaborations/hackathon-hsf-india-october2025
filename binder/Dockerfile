@@ -57,12 +57,13 @@ RUN bash Miniforge3.sh -b -p "${HOME}/conda"
 COPY binder/environment.yml .
 
 RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml && conda clean -afy; conda activate hsf-india-epic
-ENV PATH ${HOME}/conda/bin:$PATH
+ENV PATH ${HOME}/conda/envs/hsf-india-epic/bin:${HOME}/conda/bin:$PATH
 RUN which conda
 RUN conda list
 RUN conda env list
 #RUN conda activate hsf-india-epic
 #RUN conda list
+RUN echo "conda activate hsf-india-epic" >> ~/.bashrc
 RUN cat /usr/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
