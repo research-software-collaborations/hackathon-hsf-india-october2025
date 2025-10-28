@@ -91,6 +91,6 @@ WORKDIR ${HOME}/NSBI-workflow-tutorial
 
 # Install the example for faster startup
 RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e ${PIXI_ENV} --manifest-path pixi.toml
-RUN pixi run -e ${PIXI_ENV} python -m ipykernel install --user --name sbikernel --display-name "Python (pixi: sbikernel)"
+RUN CONDA_OVERRIDE_CUDA=12.5 pixi run -e ${PIXI_ENV} python -m ipykernel install --user --name sbikernel --display-name "Python (pixi: sbikernel)"
 
 ENTRYPOINT ["/usr/local/share/docker-entrypoint.sh"]
