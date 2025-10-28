@@ -15,7 +15,7 @@ dependencies:
   - jupyterlab
   - pip:
     - matplotlib
-    - awkward-array
+    - awkward
     - uproot
     - vector
     - bash_kernel
