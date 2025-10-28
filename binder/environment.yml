@@ -13,10 +13,10 @@ dependencies:
   - openssh
   - notebook 
   - jupyterlab
-  - pip:
+#  - pip:
 #    - matplotlib
 #    - awkward
-    - uproot
-    - numpy<2.0
+#    - uproot
+#    - numpy<2.0
 #    - vector
 #    - bash_kernel
