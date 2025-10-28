@@ -1,97 +1,35 @@
-# A container where CernVM-FS is up and running for CMSSW
+# A cc7 (yes, wow, cc7) container for DUNE
 
-# Make the base image configurable:
-#ARG BASEIMAGE=gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cc7-cms:latest
-#gitlab-registry.cern.ch/sft/docker/centos7-core:2023-10-26
 ARG BASEIMAGE=gitlab-registry.cern.ch/sft/docker/centos7-core:2023-10-26
-# Set up the SLC6 CMSSW base:
 FROM ${BASEIMAGE}
-
-LABEL maintainer="DLange"
-
-# Build-time metadata as defined at http://label-schema.org
-ARG BUILD_DATE
-ARG VCS_REF
-ARG VCS_URL
-ARG VERSION
-LABEL   org.label-schema.build-date=$BUILD_DATE \
-        org.label-schema.name="CC7 CMSSW Docker images using CVMFS" \
-        org.label-schema.description="Provide lightweight images for running CMSSW." \
-        org.label-schema.url="http://cms-sw.github.io/" \
-        org.label-schema.vcs-ref=$VCS_REF \
-        org.label-schema.vcs-url=$VCS_URL \
-        org.label-schema.vendor="CERN" \
-        org.label-schema.version=$VERSION \
-        org.label-schema.schema-version="1.0"
 
 USER root
 
-# install cvmfs repos
-
+# disable no longer functioning repos and add archive ones
 RUN sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/*.repo
 ADD binder/centos.repo /etc/yum.repos.d/centos.repo
 RUN yum-config-manager --add-repo /etc/yum.repos.d/centos.repo
 RUN yum clean all ; yum makecache
 
-RUN yum repolist
+#RUN yum repolist
 #RUN yum install -y policycoreutils-python
-ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
-RUN yum-config-manager --add-repo /etc/yum.repos.d/cernvm.repo
-RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
-RUN yum install -y cvmfs fuse python3
+#ADD binder/etc-yum-cernvm.repo /etc/yum.repos.d/cernvm.repo
+#RUN yum-config-manager --add-repo /etc/yum.repos.d/cernvm.repo
+#RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
+RUN yum install -y python3 glibc-devel.i686 vim nano emacs
 
-RUN yum install -y asciidoc ftgl-devel giflib-devel gl2ps-devel glew-devel glibc-devel.i686 harfbuzz-devel \
-                libAfterImage-devel libffi-devel libgcc.i686 libstdc++-devel.i686 libzstd-devel lz4-devel \
-                openldap-devel pcre2-devel perl-DBD-SQLite readline-devel subversion swig tcl-devel texinfo \
-                tk-devel xmlto xxhash-devel zstd
+#RUN yum install -y asciidoc ftgl-devel giflib-devel gl2ps-devel glew-devel glibc-devel.i686 harfbuzz-devel \
+#                libAfterImage-devel libffi-devel libgcc.i686 libstdc++-devel.i686 libzstd-devel lz4-devel \
+#                openldap-devel pcre2-devel perl-DBD-SQLite readline-devel subversion swig tcl-devel texinfo \
+#                tk-devel xmlto xxhash-devel zstd
 
+RUN yum clean -y all
 
-
- RUN yum clean -y all
-
-# afs does not work when building on Mac
-# add kerberos and afs configs
-# ADD krb5.conf /etc/krb5.conf
-# ADD afs/etc /usr/vice/etc
-# ADD openafs.ko /lib/modules/2.6.32-696.30.1.el6.x86_64/fs/openafs/openafs.ko
-# RUN echo /lib/modules/2.6.32-696.30.1.el6.x86_64/fs/openafs/openafs.ko | openafs-modules --add-modules && \
-    # /sbin/chkconfig --add afs && \
-    # /sbin/service afs start
-
-# add CVMFS mounting
-RUN mkdir -p /cvmfs/cms.cern.ch && \
-    echo "cms.cern.ch /cvmfs/cms.cern.ch cvmfs defaults 0 0" >> /etc/fstab && \
-    mkdir -p /cvmfs/cms-opendata-conddb.cern.ch && \
-    echo "cms-opendata-conddb.cern.ch /cvmfs/cms-opendata-conddb.cern.ch cvmfs defaults 0 0" >> /etc/fstab
-ADD binder/cms.cern.ch.local /etc/cvmfs/config.d/cms.cern.ch.local
-ADD binder/run-cvmfs.sh /etc/cvmfs/run-cvmfs.sh
-RUN chmod uga+rx /etc/cvmfs/run-cvmfs.sh
-ADD binder/default.local /etc/cvmfs/default.local
-
-#RUN which pip3
-#RUN which pip
-#RUN which python
 RUN which python3
 RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip
-RUN pip3 install --no-cache notebook jupyterlab
+RUN pip3 install --no-cache notebook jupyterlab 
 RUN pip3 install --no-cache numba awkward uproot matplotlib h5py hist
-
-#WORKDIR /code
-#USER cmsusr
-#ENV USER cmsusr
-#ENV HOME /home/cmsusr
-#
-#ADD     binder/entrypoint-cvmfs.sh /opt/cms/entrypoint.sh
-#RUN     sudo chmod 755 /opt/cms/entrypoint.sh && \
-#        sudo chown -R cmsusr /home/cmsusr && \
-#        chmod 755 /home/cmsusr
-WORKDIR /
-RUN mkdir /larsoft
-RUN wget http://scisoft.fnal.gov/scisoft/bundles/tools/pullProducts
-RUN chmod +x pullProducts
-RUN ./pullProducts /larsoft slf7 larsoft-v10_11_00 s131-e26 prof
-RUN rm *.tar.bz2
 
 ARG NB_USER=jovyan
 ARG NB_UID=1000
