@@ -61,7 +61,8 @@ ENV PATH ${HOME}/conda/envs/hsf-india-epic/bin:${HOME}/conda/bin:$PATH
 RUN which conda
 RUN conda list
 RUN conda env list
-RUN conda install notebook
+#even with all of this it seems we don't get the right environment...
+RUN conda install notebook jupyterlab
 #RUN conda activate hsf-india-epic
 #RUN conda list
 RUN echo "conda activate hsf-india-epic" >> ~/.bashrc
