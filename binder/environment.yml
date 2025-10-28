@@ -14,8 +14,8 @@ dependencies:
   - notebook 
   - jupyterlab
   - pip:
-    - matplotlib
-    - awkward
+#    - matplotlib
+#    - awkward
     - uproot
-    - vector
-    - bash_kernel
+#    - vector
+#    - bash_kernel
