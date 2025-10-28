@@ -61,6 +61,7 @@ ENV PATH ${HOME}/conda/envs/hsf-india-epic/bin:${HOME}/conda/bin:$PATH
 RUN which conda
 RUN conda list
 RUN conda env list
+RUN conda install notebook
 #RUN conda activate hsf-india-epic
 #RUN conda list
 RUN echo "conda activate hsf-india-epic" >> ~/.bashrc
