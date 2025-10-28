@@ -56,7 +56,9 @@ RUN bash Miniforge3.sh -b -p "${HOME}/conda"
 # add our environment
 COPY binder/environment.yml .
 
-RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml
+RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml && conda clean -afy
+ENV PATH ${HOME}/bin:$PATH
+RUN conda install -n my-binder-env -y notebook jupyterlab && conda clean -afy
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 #CMD     ["/bin/sh"]
