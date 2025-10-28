@@ -58,6 +58,9 @@ COPY binder/environment.yml .
 
 RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml && conda clean -afy
 ENV PATH ${HOME}/conda/bin:$PATH
+RUN which conda
+RUN conda list
+RUN conda env list
 
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
