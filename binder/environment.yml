@@ -17,5 +17,6 @@ dependencies:
 #    - matplotlib
 #    - awkward
     - uproot
+    - numpy<2.0
 #    - vector
 #    - bash_kernel
