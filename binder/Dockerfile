@@ -17,7 +17,7 @@ RUN yum clean all ; yum makecache
 #RUN yum-config-manager --add-repo /etc/yum.repos.d/cernvm.repo
 #RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
 
-#RUN yum install -y python3 glibc-devel.i686 vim nano emacs
+RUN yum install -y python3 glibc-devel.i686 vim nano emacs
 
 #RUN yum install -y asciidoc ftgl-devel giflib-devel gl2ps-devel glew-devel glibc-devel.i686 harfbuzz-devel \
 #                libAfterImage-devel libffi-devel libgcc.i686 libstdc++-devel.i686 libzstd-devel lz4-devel \
@@ -29,9 +29,9 @@ RUN yum clean -y all
 COPY binder/entrypoint.sh /usr/bin/entrypoint.sh
 
 #RUN which python3
-#RUN python3 -m ensurepip
-#RUN pip3 install --no-cache --upgrade pip
-#RUN pip3 install --no-cache notebook jupyterlab 
+RUN python3 -m ensurepip
+RUN pip3 install --no-cache --upgrade pip
+RUN pip3 install --no-cache notebook jupyterlab 
 #RUN pip3 install --no-cache numba awkward uproot matplotlib h5py hist
 
 ARG NB_USER=jovyan
@@ -50,25 +50,25 @@ USER ${NB_USER}
 
 WORKDIR ${HOME}
 
-RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-RUN bash Miniforge3.sh -b -p "${HOME}/conda"
+#RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+#RUN bash Miniforge3.sh -b -p "${HOME}/conda"
 
 # add our environment
-COPY binder/environment.yml .
-
-RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml && conda clean -afy; conda activate hsf-india-epic
-ENV PATH ${HOME}/conda/envs/hsf-india-epic/bin:${HOME}/conda/bin:$PATH
-RUN which conda
-RUN conda list
-RUN conda env list
-#even with all of this it seems we don't get the right environment...
-RUN conda install notebook jupyterlab
-#RUN conda activate hsf-india-epic
+#COPY binder/environment.yml .
+#
+#RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml && conda clean -afy; conda activate hsf-india-epic
+#ENV PATH ${HOME}/conda/envs/hsf-india-epic/bin:${HOME}/conda/bin:$PATH
+#RUN which conda
 #RUN conda list
-RUN echo "conda activate hsf-india-epic" >> ~/.bashrc
-RUN cat /usr/bin/entrypoint.sh
-
-ENTRYPOINT ["/usr/bin/entrypoint.sh"]
-#CMD     ["/bin/sh"]
+#RUN conda env list
+##even with all of this it seems we don't get the right environment...
+#RUN conda install notebook jupyterlab
+##RUN conda activate hsf-india-epic
+##RUN conda list
+#RUN echo "conda activate hsf-india-epic" >> ~/.bashrc
+#RUN cat /usr/bin/entrypoint.sh
+#
+#ENTRYPOINT ["/usr/bin/entrypoint.sh"]
+##CMD     ["/bin/sh"]
 
 
