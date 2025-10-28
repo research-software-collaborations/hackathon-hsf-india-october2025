@@ -61,7 +61,9 @@ ENV PATH ${HOME}/conda/bin:$PATH
 RUN which conda
 RUN conda list
 RUN conda env list
-
+RUN conda activate hsf-india-epic
+RUN conda list
+RUN cat /usr/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 #CMD     ["/bin/sh"]
