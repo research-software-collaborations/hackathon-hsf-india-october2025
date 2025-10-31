@@ -20,7 +20,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-$releasever
 enabled=1
 
 [epel]
-name=Extra Packages for Enterprise Linux 7 - $basearch
+name=Vault Extra Packages for Enterprise Linux 7 - $basearch
 baseurl=https://archives.fedoraproject.org/pub/archive/epel/7/$basearch
 enabled=1
 gpgcheck=1
