@@ -59,7 +59,8 @@ WORKDIR ${HOME}
 
 # add our environment
 COPY binder/environment.yml .
-RUN . /opt/conda/etc/profile.d/conda.sh; mamba env create -f environment.yml
+RUN . /opt/conda/etc/profile.d/conda.sh; mamba env create -f environment.yml; \
+    python -m ipykernel install --user --name myenv --display-name "Python (hsf-india)"
 
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate hsf-india" >> ~/.bashrc
