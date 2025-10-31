@@ -57,7 +57,7 @@ WORKDIR ${HOME}
 
 # add our environment
 COPY binder/environment.yml .
-RUN source ~/.bashrc; conda env create -f environment.yml -y
+RUN source ~/.bashrc; conda env create -f environment.yml
 SHELL ["conda", "run", "-n", "hsf-india", "/bin/bash", "-c"]
 
 
