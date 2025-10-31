@@ -34,6 +34,11 @@ RUN pip3 install --no-cache --upgrade pip
 RUN pip3 install --no-cache notebook jupyterlab 
 #RUN pip3 install --no-cache numba awkward uproot matplotlib h5py hist
 
+RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda2-4.5.11-Linux-x86_64.sh -O ~/miniconda.sh && \
+    /bin/bash ~/miniconda.sh -b -p /opt/conda && \
+    rm ~/miniconda.sh && \
+    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+    
 ARG NB_USER=jovyan
 ARG NB_UID=1000
 ENV USER ${NB_USER}
@@ -46,7 +51,12 @@ RUN adduser \
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
+
 USER ${NB_USER}
+
+RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate base" >> ~/.bashrc
+
 
 WORKDIR ${HOME}
 
