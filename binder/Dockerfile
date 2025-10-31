@@ -63,7 +63,7 @@ RUN . /opt/conda/etc/profile.d/conda.sh; mamba env create -f environment.yml; \
     python -m ipykernel install --user --name myenv --display-name "Python (hsf-india)"
 
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate hsf-india" >> ~/.bashrc
+    echo "conda activate base" >> ~/.bashrc
 #SHELL ["conda", "run", "-n", "hsf-india", "/bin/bash", "-c"]
 
 
