@@ -34,9 +34,9 @@ RUN wget --quiet https://github.com/conda-forge/miniforge/releases/download/23.3
     -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
     rm ~/miniconda.sh && \
-    ln -s /opt/conda/etc/profile.d/mamba.sh /etc/profile.d/mamba.sh
+    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
 
-RUN . /opt/conda/etc/profile.d/mamba.sh; 
+RUN . /opt/conda/etc/profile.d/conda.sh; 
     
 ARG NB_USER=jovyan
 ARG NB_UID=1000
@@ -53,7 +53,7 @@ RUN chown -R ${NB_UID} ${HOME}
 
 USER ${NB_USER}
 
-RUN echo ". /opt/conda/etc/profile.d/mamba.sh" >> ~/.bashrc && \
+RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "mamba activate base" >> ~/.bashrc
 
 WORKDIR ${HOME}
