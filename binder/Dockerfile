@@ -38,6 +38,8 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda2-4.5.11-Linux-x86
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
     rm ~/miniconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+
+RUN . /opt/conda/etc/profile.d/conda.sh; conda upgrade -n base conda
     
 ARG NB_USER=jovyan
 ARG NB_UID=1000
@@ -67,7 +69,7 @@ WORKDIR ${HOME}
 
 # add our environment
 COPY binder/environment.yml .
-RUN source ~/.bashrc; conda upgrade -n base conda; conda env create -f environment.yml -y
+RUN source ~/.bashrc; conda env create -f environment.yml -y
 SHELL ["conda", "run", "-n", "hsf-india", "/bin/bash", "-c"]
 #
 #RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml && conda clean -afy; conda activate hsf-india-epic
