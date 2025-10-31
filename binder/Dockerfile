@@ -54,7 +54,7 @@ RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
 
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "mamba activate base" >> ~/.bashrc
+    echo "conda activate base" >> ~/.bashrc
 
 WORKDIR ${HOME}
 
