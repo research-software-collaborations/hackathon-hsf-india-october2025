@@ -67,7 +67,7 @@ WORKDIR ${HOME}
 
 # add our environment
 COPY binder/environment.yml .
-RUN source ~/.bashrc; conda upgrade -n base conda; conda env create -f environment.yml
+RUN source ~/.bashrc; conda upgrade -n base conda; conda env create -f environment.yml -y
 SHELL ["conda", "run", "-n", "hsf-india", "/bin/bash", "-c"]
 #
 #RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml && conda clean -afy; conda activate hsf-india-epic
