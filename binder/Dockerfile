@@ -53,14 +53,16 @@ RUN chown -R ${NB_UID} ${HOME}
 
 USER ${NB_USER}
 
-RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base" >> ~/.bashrc
+
 
 WORKDIR ${HOME}
 
 # add our environment
 COPY binder/environment.yml .
-RUN source ~/.bashrc; mamba env create -f environment.yml
-SHELL ["mamba", "run", "-n", "hsf-india", "/bin/bash", "-c"]
+RUN . /opt/conda/etc/profile.d/conda.sh; mamba env create -f environment.yml
+
+RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate hsf-india" >> ~/.bashrc
+#SHELL ["conda", "run", "-n", "hsf-india", "/bin/bash", "-c"]
 
 
