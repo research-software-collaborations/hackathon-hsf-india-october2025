@@ -30,7 +30,7 @@ RUN pip3 install --no-cache notebook jupyterlab
 #https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 #https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh
 #works https://repo.anaconda.com/miniconda/Miniconda3-py39_23.5.1-0-Linux-x86_64.sh \
-RUN wget --quiet https://github.com/conda-forge/miniforge/releases/download/23.3.1-1/Mambaforge-23.3.1-1-Linux-x86_64.sh
+RUN wget --quiet https://github.com/conda-forge/miniforge/releases/download/23.3.1-1/Mambaforge-23.3.1-1-Linux-x86_64.sh \
     -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
     rm ~/miniconda.sh && \
