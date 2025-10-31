@@ -13,7 +13,7 @@ dependencies:
   - pip:
     - matplotlib
     # force an old version..
-    - contourpy=1.0.7
+    - contourpy==1.0.7
 #    - awkward
 #    - uproot
     - numpy<2.0
