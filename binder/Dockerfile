@@ -17,7 +17,7 @@ RUN yum clean all ; yum makecache
 #RUN yum-config-manager --add-repo /etc/yum.repos.d/cernvm.repo
 #RUN yum install -y https://cvmrepo.web.cern.ch/cvmrepo/yum/cvmfs/EL/7.10/x86_64/cvmfs-config-default-2.0-1.noarch.rpm
 
-RUN yum install -y python3 glibc-devel.i686 vim nano emacs xxhash xxhash-devel xxhash-libs > /etc/yum.out
+RUN yum install -y python3 glibc-devel.i686 vim nano emacs xxhash-devel  > /etc/yum.out
 
 #RUN yum install -y asciidoc ftgl-devel giflib-devel gl2ps-devel glew-devel glibc-devel.i686 harfbuzz-devel \
 #                libAfterImage-devel libffi-devel libgcc.i686 libstdc++-devel.i686 libzstd-devel lz4-devel \
