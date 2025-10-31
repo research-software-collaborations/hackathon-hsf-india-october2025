@@ -54,6 +54,8 @@ RUN chown -R ${NB_UID} ${HOME}
 
 USER ${NB_USER}
 
+
+
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate base" >> ~/.bashrc
 
@@ -64,7 +66,9 @@ WORKDIR ${HOME}
 #RUN bash Miniforge3.sh -b -p "${HOME}/conda"
 
 # add our environment
-#COPY binder/environment.yml .
+COPY binder/environment.yml .
+RUN conda env create -f environment.yml
+SHELL ["conda", "run", "-n", "hsf-india", "/bin/bash", "-c"]
 #
 #RUN source ${HOME}/conda/bin/activate; conda env create -f environment.yml && conda clean -afy; conda activate hsf-india-epic
 #ENV PATH ${HOME}/conda/envs/hsf-india-epic/bin:${HOME}/conda/bin:$PATH
