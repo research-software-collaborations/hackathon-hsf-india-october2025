@@ -28,7 +28,7 @@ RUN pip3 install --no-cache --upgrade pip
 RUN pip3 install --no-cache notebook jupyterlab 
 #RUN pip3 install --no-cache numba awkward uproot matplotlib h5py hist
 #https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-RUN wget --quiet curl -O https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh -O ~/miniconda.sh && \
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
     rm ~/miniconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
