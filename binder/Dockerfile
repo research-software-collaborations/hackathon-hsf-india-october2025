@@ -98,8 +98,9 @@ WORKDIR ${HOME}
 
 # Install the example for faster startup
 COPY binder/compressed_mapping.json compressed_mapping.json
-RUN CONDA_OVERRIDE_CUDA=12.5 pixi import --format=conda-env ${HOME}/${GH_REPO}/environment.yml
-RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e binder 
+RUN CONDA_OVERRIDE_CUDA=12.5 pixi import --manifest-path ${HOME}/pixi.toml --format=conda-env ${HOME}/${GH_REPO}/environment.yml
+RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e binder --manifest-path ${HOME}/pixi.toml
+#RUN CONDA_OVERRIDE_CUDA=12.5 pixi run -e ${PIXI_ENV} python -m ipykernel install --user --name sbikernel --display-name "Python (pixi: sbikernel)"
 #--manifest-path ${HOME}/pixi.toml
 
 ENTRYPOINT ["/usr/local/share/docker-entrypoint.sh"]
