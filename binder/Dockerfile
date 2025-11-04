@@ -1,8 +1,8 @@
 #
-ARG GH_ORG="https://github.com/iris-hep"
-ARG GH_REPO="NSBI-workflow-tutorial"
-ARG GH_BRANCH="workspace_building_feature"
-ARG PIXI_ENV="nsbi-env-gpu"
+ARG GH_ORG="https://github.com/davidlange6"
+ARG GH_REPO="my-first-pixi-project"
+ARG GH_BRANCH="main"
+ARG PIXI_ENV="my_first_pixi_project"
 
 #
 # Taken from https://github.com/renan-r-santos/pixi-kernel-binder
@@ -93,7 +93,6 @@ COPY --from=pixi-builder /opt/binder/.pixi /opt/binder/.pixi
 COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
 
 WORKDIR ${HOME}
-#/NSBI-workflow-tutorial 
 
 # Install the example for faster startup
 RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e default --manifest-path ${HOME}/pixi.toml
