@@ -69,13 +69,15 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
-RUN echo '#!/bin/bash\n. /usr/local/share/pixi-activate.sh\n cd \n git pull\n cd ..\n exec "$@"' > /usr/local/share/docker-entrypoint.sh && \
+RUN echo '#!/bin/bash\n. /usr/local/share/pixi-activate.sh\n exec "$@"' > /usr/local/share/docker-entrypoint.sh && \
     chmod +x /usr/local/share/docker-entrypoint.sh
+#RUN echo '#!/bin/bash\n. /usr/local/share/pixi-activate.sh\n cd \n git pull\n cd ..\n exec "$@"' > /usr/local/share/docker-entrypoint.sh && \
+#    chmod +x /usr/local/share/docker-entrypoint.sh
 
 # Make sure the contents of this repo are in ${HOME} and owned by ${NB_USER}
 COPY binder/jupyter_config.py ${HOME}/
 RUN echo "c.MappingKernelManager.default_kernel_name='pixi-kernel-python3'" >> ${HOME}/jupyter_config.py
-COPY binder/pixi.lock ${HOME}/
+#COPY binder/pixi.lock ${HOME}/
 COPY binder/pixi.toml ${HOME}/
 
 RUN cd ${HOME}; git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}; cd ${GH_REPO}; rm pixi.toml
