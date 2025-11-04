@@ -95,7 +95,7 @@ COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
 WORKDIR ${HOME}
 
 # Install the example for faster startup
-RUN CONDA_OVERRIDE_CUDA=12.5 pixi import --format=conda-env ${HOME}/${GH_BRANCH}/environment.yml
+RUN CONDA_OVERRIDE_CUDA=12.5 pixi import --format=conda-env ${HOME}/${GH_REPO}/environment.yml
 RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e binder 
 #--manifest-path ${HOME}/pixi.toml
 
