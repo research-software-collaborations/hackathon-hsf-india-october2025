@@ -80,6 +80,7 @@ RUN echo "c.MappingKernelManager.default_kernel_name='pixi-kernel-python3'" >> $
 #COPY binder/pixi.lock ${HOME}/
 COPY binder/pixi.toml ${HOME}/
 
+RUN ls
 RUN cd ${HOME}; git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}; cd ${GH_REPO}; rm pixi.toml
 #RUN echo "extramojo = { git = \"${GH_ORG}/${GH_REPO}\" }" >> ${HOME}/pixi.toml
 #RUN cat ${HOME}/pixi.toml
