@@ -78,9 +78,9 @@ RUN echo "c.MappingKernelManager.default_kernel_name='pixi-kernel-python3'" >> $
 COPY binder/pixi.lock ${HOME}/
 COPY binder/pixi.toml ${HOME}/
 
-#RUN cd ${HOME}; git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}
-RUN echo "extramojo = { git = \"${GH_ORG}/${GH_REPO}\" }" >> ${HOME}/pixi.toml
-RUN cat ${HOME}/pixi.toml
+RUN cd ${HOME}; git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}; cd ${GH_REPO}; rm pixi.toml
+#RUN echo "extramojo = { git = \"${GH_ORG}/${GH_REPO}\" }" >> ${HOME}/pixi.toml
+#RUN cat ${HOME}/pixi.toml
 
 RUN mkdir -p ${HOME}/.jupyter && \
     cp ${HOME}/jupyter_config.py ${HOME}/.jupyter/jupyter_config.py && \
@@ -95,6 +95,8 @@ COPY --from=pixi-builder /pixi-activate.sh /usr/local/share/pixi-activate.sh
 WORKDIR ${HOME}
 
 # Install the example for faster startup
-RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e default --manifest-path ${HOME}/pixi.toml
+RUN CONDA_OVERRIDE_CUDA=12.5 pixi import --format=conda-env ${HOME}/${GH_BRANCH}/environment.yml
+RUN CONDA_OVERRIDE_CUDA=12.5 pixi install -e binder 
+#--manifest-path ${HOME}/pixi.toml
 
 ENTRYPOINT ["/usr/local/share/docker-entrypoint.sh"]
