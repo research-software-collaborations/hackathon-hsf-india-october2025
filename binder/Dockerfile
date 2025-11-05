@@ -48,6 +48,7 @@ USER ${NB_USER}
 WORKDIR ${HOME}
 
 RUN echo "pkgs_dirs: \n  - /home/jovyan/.conda/pkgs\n" > .condarc
+RUN echo "envs_dirs: \n  - /home/jovyan/envs\n" >> .condarc
 
 # add our environment
 RUN git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}
