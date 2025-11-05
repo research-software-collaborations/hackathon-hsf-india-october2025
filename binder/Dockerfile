@@ -19,8 +19,8 @@ COPY binder/entrypoint.sh /usr/bin/entrypoint.sh
 #RUN python3 -m ensurepip
 #RUN pip3 install --no-cache --upgrade pip
 #RUN pip3 install --no-cache notebook jupyterlab 
-
-RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+#https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+RUN wget --quiet https://github.com/conda-forge/miniforge/releases/download/25.9.1-0/Miniforge3-25.9.1-0-Linux-x86_64.sh \
     -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
     rm ~/miniconda.sh && \
