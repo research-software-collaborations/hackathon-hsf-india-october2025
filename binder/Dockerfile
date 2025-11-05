@@ -54,7 +54,8 @@ RUN echo "envs_dirs: \n  - /home/jovyan/envs\n" >> .condarc
 RUN git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}
 #COPY binder/environment.yml .
 
-RUN . /opt/conda/etc/profile.d/conda.sh; mamba env create -f ${GH_REPO}/environment.yml; \
+RUN . /opt/conda/etc/profile.d/conda.sh; \
+    mamba env create -f ${GH_REPO}/environment.yml; \
     conda activate ${ENV_NAME}; \
     python -m ipykernel install --user --name myenv --display-name "Python (hsf-india)"
 
