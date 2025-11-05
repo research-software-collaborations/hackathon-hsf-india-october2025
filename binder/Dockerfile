@@ -4,6 +4,11 @@ ENV SHELL /bin/bash
 ARG NEW_MAMBA_USER=jovyan
 ARG NEW_MAMBA_USER_ID=1000
 ARG NEW_MAMBA_USER_GID=57440
+
+ARG GH_ORG="https://github.com/research-software-collaborations"
+ARG GH_REPO="courses-hsf-india-september2025"
+ARG GH_BRANCH="python"
+
 USER root
 
 RUN if grep -q '^ID=alpine$' /etc/os-release; then \
