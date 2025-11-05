@@ -8,7 +8,7 @@ ARG NEW_MAMBA_USER_GID=57440
 ARG GH_ORG="https://github.com/research-software-collaborations"
 ARG GH_REPO="courses-hsf-india-september2025"
 ARG GH_BRANCH="python"
-
+ARG GH_ENV_DIR="${GH_REPO}/binder"
 USER root
 
 RUN if grep -q '^ID=alpine$' /etc/os-release; then \
@@ -28,13 +28,26 @@ RUN if grep -q '^ID=alpine$' /etc/os-release; then \
     echo "${NEW_MAMBA_USER}" > "/etc/arg_mamba_user" && \
     :
 ENV MAMBA_USER=$NEW_MAMBA_USER
+
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 USER $MAMBA_USER
-    
-RUN micromamba install -y -n base -c conda-forge \
-       python=3.11 \
-       jupyterlab git openssh \ 
-       notebook uproot awkward vim nano emacs "numpy<2" && \      
+
+RUN git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}
+
+RUN micromamba env create -n base -f ${GH_ENV_DIR}/environment.yml && \
+    micromamba install -y -n base -c conda-forge \       
+       jupyterlab openssh notebook vim nano emacs  && \      
     micromamba clean --all --yes
+
+#RUN micromamba install -y -n base -c conda-forge \
+#       python=3.11 \
+#       jupyterlab git openssh \ 
+#       notebook uproot awkward vim nano emacs "numpy<2" && \      
+#    micromamba clean --all --yes
+
 
 WORKDIR /home/jovyan
 
