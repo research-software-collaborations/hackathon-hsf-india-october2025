@@ -1,5 +1,6 @@
 FROM mambaorg/micromamba:2.3.3
 
+ENV SHELL /bin/bash
 ARG NEW_MAMBA_USER=jovyan
 ARG NEW_MAMBA_USER_ID=1000
 ARG NEW_MAMBA_USER_GID=57440
@@ -27,7 +28,9 @@ USER $MAMBA_USER
 RUN micromamba install -y -n base -c conda-forge \
        python=3.11 \
        jupyterlab \ 
-       notebook && \
+       notebook uproot awkward vim nano emacs numpy<2 && \      
     micromamba clean --all --yes
+
+WORKDIR /home/jovyan
 
 
