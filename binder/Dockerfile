@@ -38,7 +38,7 @@ USER $MAMBA_USER
 
 RUN git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}
 
-RUN micromamba env udpate --name base -f ${GH_ENV_DIR}/environment.yml && \
+RUN micromamba env update --name base -f ${GH_ENV_DIR}/environment.yml && \
     micromamba install -y  -c conda-forge \       
        jupyterlab openssh notebook vim nano emacs  && \      
     micromamba clean --all --yes
