@@ -9,7 +9,7 @@ ARG GH_ORG="https://github.com/research-software-collaborations"
 ARG GH_REPO="courses-hsf-india-september2025"
 ARG GH_BRANCH="python"
 ARG GH_ENV_DIR="${GH_REPO}/binder"
-#ARG ENV_NAME="hsf-india-python"
+
 USER root
 
 RUN if grep -q '^ID=alpine$' /etc/os-release; then \
@@ -42,12 +42,6 @@ RUN micromamba env update --name base -f ${GH_ENV_DIR}/environment.yml && \
     micromamba install -y  -c conda-forge \       
        jupyterlab openssh notebook vim nano emacs  && \      
     micromamba clean --all --yes
-
-#RUN micromamba install -y -n base -c conda-forge \
-#       python=3.11 \
-#       jupyterlab git openssh \ 
-#       notebook uproot awkward vim nano emacs "numpy<2" && \      
-#    micromamba clean --all --yes
 
 RUN echo 'export PS1="\e[0;32m\W$ \e[m"' >> .bashrc
 
