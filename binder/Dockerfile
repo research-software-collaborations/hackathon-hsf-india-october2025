@@ -47,6 +47,8 @@ USER ${NB_USER}
 
 WORKDIR ${HOME}
 
+RUN echo "pkgs_dirs: \n  - /home/jovyan/.conda/pkgs\n" > .condarc
+
 # add our environment
 RUN git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}
 #COPY binder/environment.yml .
