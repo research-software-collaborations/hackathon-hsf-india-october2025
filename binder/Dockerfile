@@ -1,65 +1,33 @@
-FROM ubuntu:24.04
-RUN userdel -r ubuntu
+FROM mambaorg/micromamba:2.3.3
 
-ARG GH_ORG="https://github.com/davidlange6"
-ARG GH_REPO="my-first-pixi-project"
-ARG GH_BRANCH="main"
-#should get name from environment.yml itself..
-ARG ENV_NAME="binder" 
-
-#USER root
-#can I move all of this to mamba?
-RUN apt-get update -y; apt-get install -y emacs-nox nano vim git wget; apt-get clean -y all
-#python3 glibc-devel.i686 vim nano emacs xxhash-devel libzstd 
-
-COPY binder/entrypoint.sh /usr/bin/entrypoint.sh
-
-#RUN which python3
-#can all this be removed?
-#RUN python3 -m ensurepip
-#RUN pip3 install --no-cache --upgrade pip
-#RUN pip3 install --no-cache notebook jupyterlab 
-#https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-RUN wget --quiet https://github.com/conda-forge/miniforge/releases/download/25.9.1-0/Miniforge3-25.9.1-0-Linux-x86_64.sh \
-    -O ~/miniconda.sh && \
-    /bin/bash ~/miniconda.sh -b -p /opt/conda && \
-    rm ~/miniconda.sh && \
-    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
-
-RUN . /opt/conda/etc/profile.d/conda.sh; 
-    
-ARG NB_USER=jovyan
-ARG NB_UID=1000
-ENV USER ${NB_USER}
-ENV HOME /home/${NB_USER}
-ENV SHELL /bin/bash
-
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
-
-COPY . ${HOME}
+ARG NEW_MAMBA_USER=jovyan
+ARG NEW_MAMBA_USER_ID=1000
+ARG NEW_MAMBA_USER_GID=57440
 USER root
-RUN chown -R ${NB_UID} ${HOME}
 
-USER ${NB_USER}
-
-WORKDIR ${HOME}
-
-RUN echo "pkgs_dirs: \n  - /home/jovyan/.conda/pkgs\n" > .condarc
-RUN echo "envs_dirs: \n  - /home/jovyan/envs\n" >> .condarc
-
-# add our environment
-RUN git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}
-#COPY binder/environment.yml .
-
-RUN . /opt/conda/etc/profile.d/conda.sh; \
-    mamba env create -f ${GH_REPO}/environment.yml; \
-    conda activate ${ENV_NAME}; \
-    python -m ipykernel install --user --name myenv --display-name "Python (hsf-india)"
-
-RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "mamba activate binder" >> ~/.bashrc
+RUN if grep -q '^ID=alpine$' /etc/os-release; then \
+      # alpine does not have usermod/groupmod
+      apk add --no-cache --virtual temp-packages shadow; \
+    fi && \
+    usermod "--login=${NEW_MAMBA_USER}" "--home=/home/${NEW_MAMBA_USER}" \
+        --move-home "-u ${NEW_MAMBA_USER_ID}" "${MAMBA_USER}" && \
+    groupmod "--new-name=${NEW_MAMBA_USER}" \
+        "-g ${NEW_MAMBA_USER_GID}" "${MAMBA_USER}" && \
+    if grep -q '^ID=alpine$' /etc/os-release; then \
+      # remove the packages that were only needed for usermod/groupmod
+      apk del temp-packages; \
+    fi && \
+    # Update the expected value of MAMBA_USER for the
+    # _entrypoint.sh consistency check.
+    echo "${NEW_MAMBA_USER}" > "/etc/arg_mamba_user" && \
+    :
+ENV MAMBA_USER=$NEW_MAMBA_USER
+USER $MAMBA_USER
+    
+RUN micromamba install -y -n base -c conda-forge \
+       python=3.11 \
+       jupyterlab \ 
+       notebook && \
+    micromamba clean --all --yes
 
 
