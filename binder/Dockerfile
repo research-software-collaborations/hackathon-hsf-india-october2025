@@ -1,4 +1,8 @@
-# A cc7 (yes, wow, cc7) container for DUNE
+ARG GH_ORG="https://github.com/davidlange6"
+ARG GH_REPO="my-first-pixi-project"
+ARG GH_BRANCH="main"
+ARG ENV_NAME="binder" 
+#should get name from environment.yml itself..
 
 FROM ubuntu:24.04
 
@@ -41,9 +45,11 @@ USER ${NB_USER}
 WORKDIR ${HOME}
 
 # add our environment
-COPY binder/environment.yml .
-RUN . /opt/conda/etc/profile.d/conda.sh; mamba env create -f environment.yml; \
-    conda activate hsf-india; \
+RUN git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}
+#COPY binder/environment.yml .
+
+RUN . /opt/conda/etc/profile.d/conda.sh; mamba env create -f ${GH_REPO}/environment.yml; \
+    conda activate ${ENV_NAME}; \
     python -m ipykernel install --user --name myenv --display-name "Python (hsf-india)"
 
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
