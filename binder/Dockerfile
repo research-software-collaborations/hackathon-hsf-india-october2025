@@ -5,6 +5,7 @@ ARG ENV_NAME="binder"
 #should get name from environment.yml itself..
 
 FROM ubuntu:24.04
+RUN userdel -r ubuntu
 
 #USER root
 #can I move all of this to mamba?
