@@ -28,7 +28,7 @@ USER $MAMBA_USER
 RUN micromamba install -y -n base -c conda-forge \
        python=3.11 \
        jupyterlab \ 
-       notebook uproot awkward vim nano emacs numpy<2 && \      
+       notebook uproot awkward vim nano emacs "numpy<2" && \      
     micromamba clean --all --yes
 
 WORKDIR /home/jovyan
