@@ -8,10 +8,8 @@ FROM ubuntu:24.04
 
 #USER root
 #can I move all of this to mamba?
-RUN apt-get update -y
-RUN apt-get install -y emacs nano vim git
+RUN apt-get update -y; apt-get install -y emacs nano vim git; apt-get clean -y all
 #python3 glibc-devel.i686 vim nano emacs xxhash-devel libzstd 
-RUN apt-get clean -y all
 
 COPY binder/entrypoint.sh /usr/bin/entrypoint.sh
 
