@@ -43,8 +43,10 @@ RUN micromamba env update --name base -f ${GH_ENV_DIR}/environment.yml && \
        jupyterlab openssh notebook vim nano emacs  && \      
     micromamba clean --all --yes
 
+WORKDIR /home/jovyan
+
 RUN echo 'export PS1="\e[0;32m\W$ \e[m"' >> .bashrc
 
-WORKDIR /home/jovyan
+
 
 
