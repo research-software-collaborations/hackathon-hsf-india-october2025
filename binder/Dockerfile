@@ -59,6 +59,6 @@ RUN . /opt/conda/etc/profile.d/conda.sh; mamba env create -f ${GH_REPO}/environm
     python -m ipykernel install --user --name myenv --display-name "Python (hsf-india)"
 
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base" >> ~/.bashrc
+    echo "conda activate binder" >> ~/.bashrc
 
 
