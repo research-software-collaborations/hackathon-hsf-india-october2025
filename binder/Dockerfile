@@ -9,6 +9,7 @@ ARG GH_ORG="https://github.com/research-software-collaborations"
 ARG GH_REPO="courses-hsf-india-september2025"
 ARG GH_BRANCH="python"
 ARG GH_ENV_DIR="${GH_REPO}/binder"
+ARG ENV_NAME="hsf-india-python"
 USER root
 
 RUN if grep -q '^ID=alpine$' /etc/os-release; then \
@@ -37,8 +38,8 @@ USER $MAMBA_USER
 
 RUN git clone -b ${GH_BRANCH} ${GH_ORG}/${GH_REPO}
 
-RUN micromamba env create -n base -f ${GH_ENV_DIR}/environment.yml && \
-    micromamba install -y -n base -c conda-forge \       
+RUN micromamba env create -f ${GH_ENV_DIR}/environment.yml && \
+    micromamba install -y -n ${ENV_NAME} -c conda-forge \       
        jupyterlab openssh notebook vim nano emacs  && \      
     micromamba clean --all --yes
 
