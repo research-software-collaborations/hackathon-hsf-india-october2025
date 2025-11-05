@@ -1,11 +1,11 @@
+FROM ubuntu:24.04
+RUN userdel -r ubuntu
+
 ARG GH_ORG="https://github.com/davidlange6"
 ARG GH_REPO="my-first-pixi-project"
 ARG GH_BRANCH="main"
-ARG ENV_NAME="binder" 
 #should get name from environment.yml itself..
-
-FROM ubuntu:24.04
-RUN userdel -r ubuntu
+ARG ENV_NAME="binder" 
 
 #USER root
 #can I move all of this to mamba?
