@@ -60,6 +60,6 @@ RUN . /opt/conda/etc/profile.d/conda.sh; \
     python -m ipykernel install --user --name myenv --display-name "Python (hsf-india)"
 
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate binder" >> ~/.bashrc
+    echo "mamba activate binder" >> ~/.bashrc
 
 
