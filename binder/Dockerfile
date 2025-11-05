@@ -6,7 +6,7 @@ ARG ENV_NAME="binder"
 
 FROM ubuntu:24.04
 
-USER root
+#USER root
 #can I move all of this to mamba?
 RUN apt-get update -y
 RUN apt-get install -y emacs nano vim git
