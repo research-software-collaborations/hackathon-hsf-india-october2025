@@ -9,7 +9,7 @@ RUN userdel -r ubuntu
 
 #USER root
 #can I move all of this to mamba?
-RUN apt-get update -y; apt-get install -y emacs nano vim git wget; apt-get clean -y all
+RUN apt-get update -y; apt-get install -y emacs-nox nano vim git wget; apt-get clean -y all
 #python3 glibc-devel.i686 vim nano emacs xxhash-devel libzstd 
 
 COPY binder/entrypoint.sh /usr/bin/entrypoint.sh
